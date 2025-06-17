@@ -1,162 +1,265 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="On this page you can create a new article for ESC News. Fill in the required fields and click Publish to publish your article.">
-    <meta name="keyword"
-        content="create article, create news post, create news article, create news post form, create news article form, esc news admin create article, esc news admin create post, esc news admin create article form, esc news admin create post form">
-    <meta name="author" content="ESC News Team">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="On this page you can create a new article for ESC News. Fill in the required fields and click Publish to publish your article."
+    />
+    <meta
+      name="keyword"
+      content="create article, create news post, create news article, create news post form, create news article form, esc news admin create article, esc news admin create post, esc news admin create article form, esc news admin create post form"
+    />
+    <meta name="author" content="ESC News Team" />
     <title>ESC News - Create an article</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-        href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="../../css/pages/postedit.css">
-    <link rel="stylesheet" href="../../css/stylesheet.css">
-    <link rel="apple-touch-icon" sizes="180x180" href="../../assets/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../../assets/favicon/favicon-16x16.png">
-    <link rel="manifest" href="../../assets/favicon/site.webmanifest">
-    <script src="https://kit.fontawesome.com/f119ec2cf5.js" crossorigin="anonymous"></script>
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../css/pages/postedit.css" />
+    <link rel="stylesheet" href="../../css/stylesheet.css" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="../../assets/favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="../../assets/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="../../assets/favicon/favicon-16x16.png"
+    />
+    <link rel="manifest" href="../../assets/favicon/site.webmanifest" />
+    <script
+      src="https://kit.fontawesome.com/f119ec2cf5.js"
+      crossorigin="anonymous"
+    ></script>
     <script type="module" src="../../js/post/create.js"></script>
+  </head>
 
-</head>
-
-<body>
+  <body>
     <a href="#main-content" class="skip2main sr-only">Skip to main content</a>
     <header class="header--dark">
-        <a href="../../index.html" class="header__logo-container">
-            <img src="../../assets/logos/logo-with-icon.png" alt="ESC News logo, go to homepage" class="logo--image">
-        </a>
-        <input type="checkbox" id="menu-checkbox">
-        <div class="burger-menu">
-            <label for="menu-checkbox" class="burger-btn" aria-label="Toggle burger menu">
-                <span class="burger-btn__icon">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </span>
-            </label>
-        </div>
-        <nav class="nav">
-            <button class="button primary large burger__cta arrow-right">Log in</button>
+      <a href="../../index.html" class="header__logo-container">
+        <img
+          src="../../assets/logos/logo-with-icon.png"
+          alt="ESC News logo, go to homepage"
+          class="logo--image"
+        />
+      </a>
+      <input type="checkbox" id="menu-checkbox" />
+      <div class="burger-menu">
+        <label
+          for="menu-checkbox"
+          class="burger-btn"
+          aria-label="Toggle burger menu"
+        >
+          <span class="burger-btn__icon">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </label>
+      </div>
+      <nav class="nav">
+        <button class="button primary large burger__cta arrow-right">
+          Log in
+        </button>
 
-            <a href="../../index.html">News</a>
-            <a href="../public/404.html">Events</a>
-            <a href="../public/404.html">Music videos</a>
-            <a href="../public/404.html">Contestants</a>
-            <a href="../public/404.html">About</a>
-        </nav>
-        <a href="../account/login.html" class="button primary small arrow-right header__cta">Sign in</a>
-
+        <a href="../../index.html">News</a>
+        <a href="../public/404.html">Events</a>
+        <a href="../public/404.html">Music videos</a>
+        <a href="../public/404.html">Contestants</a>
+        <a href="../public/404.html">About</a>
+      </nav>
+      <a
+        href="../account/login.html"
+        class="button primary small arrow-right header__cta"
+        >Sign in</a
+      >
     </header>
     <main class="main--admin" id="main-content">
-        <section class="postedit" id="postedit">
-            <div class="postedit__container">
-                <div class="section__header narrow">
-                    <h1 class="section__heading">Create an article</h1>
-                    <p class="postedit__text">Fill in the required fields * and any extra fields if you want. When done,
-                        click Publish.</p>
-                    <p class="postedit__text">You can always edit a published post if necessary.</p>
+      <section class="postedit" id="postedit">
+        <div class="postedit__container">
+          <div class="section__header narrow">
+            <h1 class="section__heading">Create an article</h1>
+            <p class="postedit__text">
+              Fill in the required fields * and any extra fields if you want.
+              When done, click Publish.
+            </p>
+            <p class="postedit__text">
+              You can always edit a published post if necessary.
+            </p>
+          </div>
+          <form class="postedit__form" name="createPostForm">
+            <label
+              for="heading-input"
+              class="postedit__form__info heading-lable"
+              >Article heading</label
+            >
+            <input
+              type="text"
+              name="title"
+              id="heading-input"
+              required
+              minlength="3"
+              maxlength="60"
+              class="postedit__form__info name-input"
+              placeholder="Article heading. Max 60 characters."
+              title="Min 3 characters, max 60 characters."
+            />
 
-                </div>
-                <form class="postedit__form" name="createPostForm">
-                    <label for="heading-input" class="postedit__form__info heading-lable">Article heading</label>
-                    <input type="text" name="title" id="heading-input" required minlength="3" maxlength="60"
-                        class="postedit__form__info name-input" placeholder="Article heading. Max 60 characters."
-                        title="Min 3 characters, max 60 characters.">
+            <label for="body-input" class="">Article body</label>
+            <textarea
+              name="body"
+              id="body-input"
+              required
+              minlength="300"
+              maxlength="1500"
+              placeholder="Article body. Max 1500 characters. "
+              title="Body requirments: Min 300 characters, max 1500 characters."
+            ></textarea>
+            <label for="link-input" class="">Link to image</label>
+            <input
+              type="url"
+              name="url"
+              id="link-input"
+              class="postedit__form__info link-input"
+              placeholder="Link"
+              pattern=".*\.(gif|jpe?g|png|webp)($|\?.*$|#.*$|\/.*$)"
+              required
+              title="Image link including .jpg/.jpeg/.png/.gif/.webp."
+            />
 
-                    <label for="body-input" class="">Article body</label>
-                    <textarea name="body" id="body-input" required minlength="300" maxlength="1500"
-                        placeholder="Article body. Max 1500 characters. "
-                        title="Body requirments: Min 300 characters, max 1500 characters."></textarea>
-                    <label for="link-input" class="">Link to image</label>
-                    <input type="url" name="url" id="link-input" class="postedit__form__info link-input"
-                        placeholder="Link" pattern=".*\.(gif|jpe?g|png|webp)($|\?.*$|#.*$|\/.*$)" required
-                        title="Image link including .jpg/.jpeg/.png/.gif/.webp.">
+            <label for="alt-input" class="">Alt text for image or video</label>
+            <input
+              type="text"
+              name="alt"
+              id="alt-input"
+              class=""
+              placeholder="Alt text"
+              minlength="10"
+              maxlength="100"
+              required
+              title="Alt text requirments: Min 10 characters, max 100 characters. "
+            />
 
-                    <label for="alt-input" class="">Alt text for image or video</label>
-                    <input type="text" name="alt" id="alt-input" class="" placeholder="Alt text" minlength="10"
-                        maxlength="100" required title="Alt text requirments: Min 10 characters, max 100 characters. ">
-
-                    <div class="checkbox-container">
-                        <input type="checkbox" name="publish-confirmation" id="publish-confirmation-input" required>
-                        <label for="publish-confirmation-input" class="publish-confirmation">I am ready to
-                            publish.</label>
-                    </div>
-                    <button class="button primary arrow-right">Publish</button>
-                </form>
+            <div class="checkbox-container">
+              <input
+                type="checkbox"
+                name="publish-confirmation"
+                id="publish-confirmation-input"
+                required
+              />
+              <label
+                for="publish-confirmation-input"
+                class="publish-confirmation"
+                >I am ready to publish.</label
+              >
             </div>
-        </section>
+            <button class="button primary arrow-right">Publish</button>
+          </form>
+        </div>
+      </section>
     </main>
     <footer class="footer footer--dark">
-        <div class="follow">
-            <div class="some">
-                <p class="footer-heading">Follow us</p>
-                <div class="some__links">
-                    <a href="https://facebook.com/" aria-label="Go to our Facebook page"><i
-                            class="fa-brands fa-facebook"></i></a>
-                    <a href="https://instagram.com/" aria-label="Go to our Instagram page"><i
-                            class="fa-brands fa-instagram"></i></a>
-                    <a href="https://youtube.com/" aria-label="Go to our YouTube page"><i
-                            class="fa-brands fa-youtube"></i></a>
-                    <a href="https://tiktok.com/" aria-label="Go to our TikTok page"><i
-                            class="fa-brands fa-tiktok"></i></a>
-                </div>
-            </div>
-            <div class="newsletter">
-                <label for="newsletter-email" class="footer-heading">Sign up for our newsletter</label>
-                <input type="email" name="email" id="newsletter-email" class="newsletter__input"
-                    placeholder="you@mail.com">
-                <a href="../public/404.html" class="button primary small arrow-right newsletter__button">Sign up!</a>
-            </div>
+      <div class="follow">
+        <div class="some">
+          <p class="footer-heading">Follow us</p>
+          <div class="some__links">
+            <a href="https://facebook.com/" aria-label="Go to our Facebook page"
+              ><i class="fa-brands fa-facebook"></i
+            ></a>
+            <a
+              href="https://instagram.com/"
+              aria-label="Go to our Instagram page"
+              ><i class="fa-brands fa-instagram"></i
+            ></a>
+            <a href="https://youtube.com/" aria-label="Go to our YouTube page"
+              ><i class="fa-brands fa-youtube"></i
+            ></a>
+            <a href="https://tiktok.com/" aria-label="Go to our TikTok page"
+              ><i class="fa-brands fa-tiktok"></i
+            ></a>
+          </div>
         </div>
-        <div class="contact">
-            <div class="contact__logo">
-                <img src="../../assets/logos/logo-with-icon.png" alt="ESC News Logo" class="logo__image">
-            </div>
-            <div class="contact-info">
-                <div class="contact-info__address">
-                    <p class="footer-heading">Address:</p>
-                    <a href="https://maps.app.goo.gl/BVpWLY7vd48eDF687" aria-label="Find us on Google Maps">17 Fairytale
-                        Lane, NC, USA
-                    </a>
-                </div>
-                <div class="contact-info__contact">
-                    <p class="footer-heading">Contact:</p>
-                    <a href="tel:+447911123456" aria-label="Call us at +44 7911 123456">+44
-                        7911 123456
-                    </a>
-                    <a href="mailto:hi@escnews.com" aria-label="Email us at hi@escnews.com">
-                        hi@escnews.com
-                    </a>
-                </div>
-            </div>
+        <div class="newsletter">
+          <label for="newsletter-email" class="footer-heading"
+            >Sign up for our newsletter</label
+          >
+          <input
+            type="email"
+            name="email"
+            id="newsletter-email"
+            class="newsletter__input"
+            placeholder="you@mail.com"
+          />
+          <a
+            href="../public/404.html"
+            class="button primary small arrow-right newsletter__button"
+            >Sign up!</a
+          >
         </div>
-        <div class="links">
-            <div class="links__visit">
-                <a href="../../index.html" class="footer-heading">Get updated</a>
-                <a href="../public/404.html">Events</a>
-                <a href="../public/404.html">Music videos</a>
-                <a href="../public/404.html">Contestants</a>
-                <a href="../../index.html">News</a>
-            </div>
-            <div class="links__involved">
-                <a href="../public/404.html" class="footer-heading">Get involved</a>
-                <a href="../public/404.html">Jobs</a>
-                <a href="../public/404.html">Write for us</a>
-                <a href="../public/404.html">Sponsors</a>
-                <a href="../public/404.html">Partners</a>
-            </div>
+      </div>
+      <div class="contact">
+        <div class="contact__logo">
+          <img
+            src="../../assets/logos/logo-with-icon.png"
+            alt="ESC News Logo"
+            class="logo__image"
+          />
         </div>
-        <div class="copyright">
-            <p class="copyright__text">© 2025 ESC News. All rights reserved.</p>
+        <div class="contact-info">
+          <div class="contact-info__address">
+            <p class="footer-heading">Address:</p>
+            <a
+              href="https://maps.app.goo.gl/BVpWLY7vd48eDF687"
+              aria-label="Find us on Google Maps"
+              >17 Fairytale Lane, NC, USA
+            </a>
+          </div>
+          <div class="contact-info__contact">
+            <p class="footer-heading">Contact:</p>
+            <a href="tel:+447911123456" aria-label="Call us at +44 7911 123456"
+              >+44 7911 123456
+            </a>
+            <a
+              href="mailto:hi@escnews.com"
+              aria-label="Email us at hi@escnews.com"
+            >
+              hi@escnews.com
+            </a>
+          </div>
         </div>
+      </div>
+      <div class="links">
+        <div class="links__visit">
+          <a href="../../index.html" class="footer-heading">Get updated</a>
+          <a href="../public/404.html">Events</a>
+          <a href="../public/404.html">Music videos</a>
+          <a href="../public/404.html">Contestants</a>
+          <a href="../../index.html">News</a>
+        </div>
+        <div class="links__involved">
+          <a href="../public/404.html" class="footer-heading">Get involved</a>
+          <a href="../public/404.html">Jobs</a>
+          <a href="../public/404.html">Write for us</a>
+          <a href="../public/404.html">Sponsors</a>
+          <a href="../public/404.html">Partners</a>
+        </div>
+      </div>
+      <div class="copyright">
+        <p class="copyright__text">© 2025 ESC News. All rights reserved.</p>
+      </div>
     </footer>
-</body>
-
+  </body>
 </html>

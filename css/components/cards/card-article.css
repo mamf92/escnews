@@ -1,70 +1,69 @@
 .card-article {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    background-color: var(--color-deepblue);
-    border: 1px solid var(--color-black);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: var(--color-deepblue);
+  border: 1px solid var(--color-black);
 }
 
 .card-article__image {
-    display: flex;
-    justify-content: center;
-    height: 20.5rem;
+  display: flex;
+  justify-content: center;
+  height: 20.5rem;
 }
 
 .card-article__image img {
-    object-fit: cover;
-    width: 100%;
+  object-fit: cover;
+  width: 100%;
 }
 
 .card-article__content {
-    display: flex;
-    flex-direction: column;
-    gap: var(--gap-large);
-    padding: var(--padding-large) var(--padding-sm);
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-large);
+  padding: var(--padding-large) var(--padding-sm);
+  align-items: center;
 }
 
 .card-article__text {
-    display: flex;
-    flex-direction: column;
-    color: var(--color-white);
-    gap: var(--gap-sm);
-    padding: var(--padding);
+  display: flex;
+  flex-direction: column;
+  color: var(--color-white);
+  gap: var(--gap-sm);
+  padding: var(--padding);
 }
 
 .card-article__heading {
-    font-size: var(--heading-medium);
-    line-height: 2.375rem;
-    letter-spacing: 0.035rem;
+  font-size: var(--heading-medium);
+  line-height: 2.375rem;
+  letter-spacing: 0.035rem;
 }
 
-
 .card-article__authordate {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
 
 .card-article__date {
-    font-size: var(--body-xsmall);
-    line-height: 1rem;
+  font-size: var(--body-xsmall);
+  line-height: 1rem;
 }
 
 .card-article__author {
-    font-size: var(--body-xsmall);
-    line-height: 1rem;
-    text-transform: capitalize;
+  font-size: var(--body-xsmall);
+  line-height: 1rem;
+  text-transform: capitalize;
 }
 
 .card-article__body {
-    display: flex;
-    flex-direction: column;
-    gap: var(--gap-medium);
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-medium);
 }
 
 @media (min-width: 680px) {
-    .card-article__image {
-        height: 26.1875rem;
-    }
+  .card-article__image {
+    height: 26.1875rem;
+  }
 }

@@ -1,0 +1,27 @@
+{
+  "name": "escnews-v1",
+  "version": "1.0.0",
+  "description": "![ESC News Banner](https://github.com/mamf92/escnews/blob/main/images/banner.png?raw=true)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mamf92/escnews-v1.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/mamf92/escnews-v1/issues"
+  },
+  "homepage": "https://github.com/mamf92/escnews-v1#readme",
+  "devDependencies": {
+    "@eslint/js": "^9.29.0",
+    "eslint": "^9.29.0",
+    "globals": "^16.2.0",
+    "prettier": "^3.5.3"
+  }
+}

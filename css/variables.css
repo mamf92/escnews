@@ -1,127 +1,69 @@
 :root {
-    /* Colors */
-    --color-black: #0D0D0D;
-    --color-darkgrey: #262626;
-    --color-grey: #595959;
-    --color-lightgrey: #8c8c8c;
-    --color-xlightgrey: #A6A6A6;
-    --color-white: #FFFFFF;
-    --color-darkpurple: #73168C;
-    --color-purple: #9F2CBF;
-    --color-brightpurple: #C04BF2;
-    --color-deepblue: #281259;
-    --color-nightblue: #070926;
-    --color-accentgreen: #007542;
-    --color-accentmint: #7AF5BF;
-    --color-accentorange: #FF9F1D;
-    --color-accentyellow: #FFD06B;
-    --color-white-transparent: #FFFFFFDD;
-    --color-black-transparent: #0D0D0DDD;
+  /* Colors */
+  --color-black: #0d0d0d;
+  --color-darkgrey: #262626;
+  --color-grey: #595959;
+  --color-lightgrey: #8c8c8c;
+  --color-xlightgrey: #a6a6a6;
+  --color-white: #ffffff;
+  --color-darkpurple: #73168c;
+  --color-purple: #9f2cbf;
+  --color-brightpurple: #c04bf2;
+  --color-deepblue: #281259;
+  --color-nightblue: #070926;
+  --color-accentgreen: #007542;
+  --color-accentmint: #7af5bf;
+  --color-accentorange: #ff9f1d;
+  --color-accentyellow: #ffd06b;
+  --color-white-transparent: #ffffffdd;
+  --color-black-transparent: #0d0d0ddd;
 
-    /* Font families */
-    --font-heading: 'Noto Sans', 'Arial Narrow Bold', sans-serif;
-    --font-body: 'Open Sans', 'Gill Sans', sans-serif;
+  /* Font families */
+  --font-heading: 'Noto Sans', 'Arial Narrow Bold', sans-serif;
+  --font-body: 'Open Sans', 'Gill Sans', sans-serif;
 
-    /* Font weights */
-    --font-weight-normal: 400;
-    --font-weight-bold: 700;
-    --font-weight-semibold: 600;
+  /* Font weights */
+  --font-weight-normal: 400;
+  --font-weight-bold: 700;
+  --font-weight-semibold: 600;
 
-    /* Text sizing */
-    --heading-xxlarge: 2.75rem
-        /* 44px */
-    ;
-    --heading-xlarge: 2.5rem
-        /*40px*/
-    ;
-    --heading-large: 2rem
-        /*32px*/
-    ;
-    --heading-medium: 1.75rem
-        /*28px*/
-    ;
-    --heading-small: 1.25rem
-        /*20px*/
-    ;
-    --heading-xsmall: 1rem
-        /*16px*/
-    ;
-    --heading-xxsmall: 0.75em
-        /*12px*/
-    ;
+  /* Text sizing */
+  --heading-xxlarge: 2.75rem /* 44px */;
+  --heading-xlarge: 2.5rem /*40px*/;
+  --heading-large: 2rem /*32px*/;
+  --heading-medium: 1.75rem /*28px*/;
+  --heading-small: 1.25rem /*20px*/;
+  --heading-xsmall: 1rem /*16px*/;
+  --heading-xxsmall: 0.75em /*12px*/;
 
-    --body-large: 1.13em
-        /*18px*/
-    ;
-    --body-medium: 1rem
-        /*16px*/
-    ;
-    --body-small: 0.875rem
-        /*14px*/
-    ;
-    --body-xsmall: 0.75em
-        /*12px*/
-    ;
+  --body-large: 1.13em /*18px*/;
+  --body-medium: 1rem /*16px*/;
+  --body-small: 0.875rem /*14px*/;
+  --body-xsmall: 0.75em /*12px*/;
 
-    /* Spacing */
-    --padding-xlarge: 2rem
-        /*32px*/
-    ;
-    --padding-large: 1.5rem
-        /*24px*/
-    ;
-    --padding-medium: 1rem
-        /*16px*/
-    ;
-    --padding-sm: 0.75rem
-        /*12px*/
-    ;
-    --padding-small: 0.5rem
-        /*8px*/
-    ;
-    --padding-xsmall: 0.2rem
-        /*3px*/
-    ;
+  /* Spacing */
+  --padding-xlarge: 2rem /*32px*/;
+  --padding-large: 1.5rem /*24px*/;
+  --padding-medium: 1rem /*16px*/;
+  --padding-sm: 0.75rem /*12px*/;
+  --padding-small: 0.5rem /*8px*/;
+  --padding-xsmall: 0.2rem /*3px*/;
 
-    --margin-xlarge: 2rem
-        /*32px*/
-    ;
-    --margin-large: 1.5rem
-        /*24px*/
-    ;
-    --margin-medium: 1rem
-        /*16px*/
-    ;
-    --margin-small: 0.5rem
-        /*8px*/
-    ;
-    --margin-xsmall: 0.2rem
-        /*3.2px*/
-    ;
+  --margin-xlarge: 2rem /*32px*/;
+  --margin-large: 1.5rem /*24px*/;
+  --margin-medium: 1rem /*16px*/;
+  --margin-small: 0.5rem /*8px*/;
+  --margin-xsmall: 0.2rem /*3.2px*/;
 
-    --gap-xlarge: 3rem
-        /*48px*/
-    ;
-    --gap-large: 1.5rem
-        /*24px*/
-    ;
-    --gap-medium: 1rem
-        /*16px*/
-    ;
-    --gap-sm: 0.875rem
-        /*14px*/
-    ;
-    --gap-small: 0.5rem
-        /*8px*/
-    ;
-    --gap-xsmall: 0.25rem
-        /*4px*/
-    ;
-    --gap-xxsmall: 0.2rem
-        /*3px*/
-    ;
+  --gap-xlarge: 3rem /*48px*/;
+  --gap-large: 1.5rem /*24px*/;
+  --gap-medium: 1rem /*16px*/;
+  --gap-sm: 0.875rem /*14px*/;
+  --gap-small: 0.5rem /*8px*/;
+  --gap-xsmall: 0.25rem /*4px*/;
+  --gap-xxsmall: 0.2rem /*3px*/;
 
-    /* Section deviders */
-    --devider-color: black;
-    --devider-spacing: 2em;
+  /* Section deviders */
+  --devider-color: black;
+  --devider-spacing: 2em;
 }

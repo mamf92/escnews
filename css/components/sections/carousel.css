@@ -1,117 +1,115 @@
 .carousel1 {
-    display: flex;
-    flex-direction: column;
-    width: calc(100vw - 1.5rem);
-    max-width: 42.5rem;
-    margin: var(--margin-medium) auto var(--margin-xsmall) auto;
-    align-items: center;
-    background-color: var(--color-deepblue);
+  display: flex;
+  flex-direction: column;
+  width: calc(100vw - 1.5rem);
+  max-width: 42.5rem;
+  margin: var(--margin-medium) auto var(--margin-xsmall) auto;
+  align-items: center;
+  background-color: var(--color-deepblue);
 }
 
 .gallery {
-    display: grid;
-    width: 100%;
-    grid-template-columns: repeat(3, 100%);
-    grid-template-rows: 1fr;
-    grid-column-gap: var(--gap-small);
-    overflow: scroll;
-    scroll-snap-type: x mandatory;
-    padding: 0;
-    margin: 0;
-    -ms-overflow-style: none;
-    scrollbar-width: none;
+  display: grid;
+  width: 100%;
+  grid-template-columns: repeat(3, 100%);
+  grid-template-rows: 1fr;
+  grid-column-gap: var(--gap-small);
+  overflow: scroll;
+  scroll-snap-type: x mandatory;
+  padding: 0;
+  margin: 0;
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
 .gallery::-webkit-scrollbar {
-    display: none;
+  display: none;
 }
 
-
-.gallery>.carousel__item {
-    scroll-snap-align: center;
-    scroll-snap-stop: always;
-    width: 100%;
+.gallery > .carousel__item {
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
+  width: 100%;
 }
 
 .carousel__control {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
 
 .carousel__indicator {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: 0.5rem;
-    position: relative;
-    height: 1.25rem;
-    width: 4.5rem;
-    margin: 0rem auto;
-    background-color: var(--color-white);
-    border-radius: 6.1875rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  position: relative;
+  height: 1.25rem;
+  width: 4.5rem;
+  margin: 0rem auto;
+  background-color: var(--color-white);
+  border-radius: 6.1875rem;
 }
 
 .carousel__indicator span {
-    height: 0.5rem;
-    width: 0.5rem;
-    background-color: var(--color-darkpurple);
-    border-radius: 50%;
-    cursor: pointer;
+  height: 0.5rem;
+  width: 0.5rem;
+  background-color: var(--color-darkpurple);
+  border-radius: 50%;
+  cursor: pointer;
 }
 
 /* Scrolled to state */
 @keyframes grow {
-    from {
-        width: 0.5rem;
-        background-color: var(--color-darkpurple);
-        border-radius: 50%;
-    }
+  from {
+    width: 0.5rem;
+    background-color: var(--color-darkpurple);
+    border-radius: 50%;
+  }
 
-    to {
-        width: 1.5rem;
-        background-color: var(--color-purple);
-        border-radius: 6.1875rem;
-    }
-}
-
-@keyframes shrink {
-    from {
-        width: 1.5rem;
-        background-color: var(--color-purple);
-        border-radius: 6.1875rem;
-
-    }
-
-    to {
-        width: 0.5rem;
-        background-color: var(--color-darkpurple);
-        border-radius: 50%;
-    }
-}
-
-.carousel__indicator__dot.in-view-start {
+  to {
     width: 1.5rem;
     background-color: var(--color-purple);
     border-radius: 6.1875rem;
+  }
+}
+
+@keyframes shrink {
+  from {
+    width: 1.5rem;
+    background-color: var(--color-purple);
+    border-radius: 6.1875rem;
+  }
+
+  to {
+    width: 0.5rem;
+    background-color: var(--color-darkpurple);
+    border-radius: 50%;
+  }
+}
+
+.carousel__indicator__dot.in-view-start {
+  width: 1.5rem;
+  background-color: var(--color-purple);
+  border-radius: 6.1875rem;
 }
 
 .in-view {
-    animation-name: grow;
-    animation-duration: 0.7s;
-    animation-fill-mode: forwards;
+  animation-name: grow;
+  animation-duration: 0.7s;
+  animation-fill-mode: forwards;
 }
 
 .out-of-view {
-    animation-name: shrink;
-    animation-duration: 0.7s;
-    animation-fill-mode: forwards;
+  animation-name: shrink;
+  animation-duration: 0.7s;
+  animation-fill-mode: forwards;
 }
 
 .button.carousel__control__button {
-    /* display: none; */
-    min-width: 5rem;
+  /* display: none; */
+  min-width: 5rem;
 }
 
 /* @media (min-width: 1024px) {

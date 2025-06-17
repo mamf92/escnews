@@ -10,52 +10,52 @@
 
 /* Global styling */
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
 
 body {
-    min-height: 100vh;
-    display: grid;
-    grid-template-rows: auto auto auto 1fr auto;
-    grid-template-areas:
-        'skip2main'
-        'header'
-        'breadcrumbs'
-        'main'
-        'footer';
+  min-height: 100vh;
+  display: grid;
+  grid-template-rows: auto auto auto 1fr auto;
+  grid-template-areas:
+    'skip2main'
+    'header'
+    'breadcrumbs'
+    'main'
+    'footer';
 }
 
 main {
-    grid-area: main;
+  grid-area: main;
 }
 
 .main--public {
-    background-color: var(--color-nightblue);
+  background-color: var(--color-nightblue);
 }
 
 .main--admin {
-    background-color: var(--color-deepblue);
+  background-color: var(--color-deepblue);
 }
 
 h1,
 h2,
 h3 {
-    font-family: var(--font-heading);
+  font-family: var(--font-heading);
 }
 
 h1 {
-    font-size: var(--heading-medium);
-    font-weight: var(--font-weight-bold);
+  font-size: var(--heading-medium);
+  font-weight: var(--font-weight-bold);
 }
 
 h2 {
-    font-size: var(--heading-small);
-    font-weight: var(--font-weight-bold);
+  font-size: var(--heading-small);
+  font-weight: var(--font-weight-bold);
 }
 
 h3 {
-    font-size: var(--heading-xsmall);
-    font-weight: var(--font-weight-semibold);
+  font-size: var(--heading-xsmall);
+  font-weight: var(--font-weight-semibold);
 }
 
 p,
@@ -64,79 +64,79 @@ label,
 input,
 li,
 textarea {
-    font-family: var(--font-body);
-    font-size: var(--body-medium);
-    line-height: 1.375rem;
+  font-family: var(--font-body);
+  font-size: var(--body-medium);
+  line-height: 1.375rem;
 }
 
 a.link {
-    text-decoration: underline;
-    text-decoration-color: var(--color-brightpurple);
-    text-decoration-thickness: 0.11em;
+  text-decoration: underline;
+  text-decoration-color: var(--color-brightpurple);
+  text-decoration-thickness: 0.11em;
 }
 
 img {
-    max-width: 100%;
-    height: auto;
-    display: block;
+  max-width: 100%;
+  height: auto;
+  display: block;
 }
 
 .current {
-    text-decoration-line: underline;
-    text-decoration-thickness: 0.11em;
-    text-decoration-color: rgb(254, 254, 254, 1);
+  text-decoration-line: underline;
+  text-decoration-thickness: 0.11em;
+  text-decoration-color: rgb(254, 254, 254, 1);
 }
 
 /* Accessibility */
 .sr-only {
-    position: absolute;
-    width: 1px;
-    height: 1px;
-    padding: 0;
-    margin: -1px;
-    overflow: hidden;
-    clip: rect(0, 0, 0, 0);
-    border: 0;
-    color: #fff;
-    background-color: #000;
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+  color: #fff;
+  background-color: #000;
 }
 
 .skip2main {
-    grid-area: skip2main;
+  grid-area: skip2main;
 }
 
 .skip2main:focus {
-    position: fixed;
-    top: 10px;
-    left: 10px;
-    width: auto;
-    height: auto;
-    padding: 1rem;
-    background-color: #000;
-    color: #fff;
-    z-index: 100;
-    clip: auto;
+  position: fixed;
+  top: 10px;
+  left: 10px;
+  width: auto;
+  height: auto;
+  padding: 1rem;
+  background-color: #000;
+  color: #fff;
+  z-index: 100;
+  clip: auto;
 }
 
 /* UX */
 .loader {
-    margin: 4rem auto;
-    width: 48px;
-    height: 48px;
-    border: 5px solid #FFF;
-    border-bottom-color: var(--color-brightpurple);
-    border-radius: 50%;
-    display: inline-block;
-    box-sizing: border-box;
-    animation: rotation 1s linear infinite;
+  margin: 4rem auto;
+  width: 48px;
+  height: 48px;
+  border: 5px solid #fff;
+  border-bottom-color: var(--color-brightpurple);
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
 }
 
 @keyframes rotation {
-    0% {
-        transform: rotate(0deg);
-    }
+  0% {
+    transform: rotate(0deg);
+  }
 
-    100% {
-        transform: rotate(360deg);
-    }
+  100% {
+    transform: rotate(360deg);
+  }
 }

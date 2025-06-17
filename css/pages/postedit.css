@@ -1,130 +1,127 @@
 /* Register admin section */
 .postedit {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--color-deepblue);
-    padding: var(--padding-medium) 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-deepblue);
+  padding: var(--padding-medium) 0px;
 }
 
 .postedit__container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    max-width: 42.5rem;
-    background-color: var(--color-nightblue);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 42.5rem;
+  background-color: var(--color-nightblue);
 }
 
 .section__header {
-    display: flex;
-    flex-direction: column;
-    width: calc(100% - 4rem);
-    max-width: 42.5rem;
-    margin: 0 auto 0 auto;
+  display: flex;
+  flex-direction: column;
+  width: calc(100% - 4rem);
+  max-width: 42.5rem;
+  margin: 0 auto 0 auto;
 }
 
 .section__heading {
-    font-size: var(--heading-large);
-    line-height: 2.75rem;
-    letter-spacing: 0.1rem;
-    font-weight: 600;
-    color: var(--color-white);
-    padding-top: var(--padding-medium);
-    padding-bottom: var(--padding-small);
+  font-size: var(--heading-large);
+  line-height: 2.75rem;
+  letter-spacing: 0.1rem;
+  font-weight: 600;
+  color: var(--color-white);
+  padding-top: var(--padding-medium);
+  padding-bottom: var(--padding-small);
 }
 
 .section__header.narrow {
-    max-width: 512px;
+  max-width: 512px;
 }
 
 .postedit .section__header p {
-    padding-bottom: var(--padding-medium);
+  padding-bottom: var(--padding-medium);
 }
 
 .postedit__text {
-    color: var(--color-white);
+  color: var(--color-white);
 }
 
-
 .postedit__form {
-    display: flex;
-    flex-direction: column;
-    background-color: var(--color-nightblue);
-    width: calc(100% - 4em);
-    max-width: 512px;
-    margin: 0 auto 0 auto;
-    padding-bottom: var(--padding-large);
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-nightblue);
+  width: calc(100% - 4em);
+  max-width: 512px;
+  margin: 0 auto 0 auto;
+  padding-bottom: var(--padding-large);
 }
 
 .postedit__form input,
 .postedit__form textarea {
-    padding: var(--padding-sm);
-    border: 3px solid var(--color-nightblue);
-    font-size: var(--body-medium);
+  padding: var(--padding-sm);
+  border: 3px solid var(--color-nightblue);
+  font-size: var(--body-medium);
 }
 
 .postedit__form input:valid,
 .postedit__form textarea:valid {
-    border: 3px solid var(--color-accentgreen);
+  border: 3px solid var(--color-accentgreen);
 }
 
 .postedit__form textarea {
-    field-sizing: content;
-    resize: none;
+  field-sizing: content;
+  resize: none;
 }
 
 .postedit__form input:focus,
 .postedit__form textarea:focus {
-    outline: none;
-    border: 2px solid var(--color-purple);
+  outline: none;
+  border: 2px solid var(--color-purple);
 }
 
 .postedit__form label {
-    color: var(--color-white);
-    padding-top: var(--padding-large);
-    padding-bottom: var(--padding-xsmall);
+  color: var(--color-white);
+  padding-top: var(--padding-large);
+  padding-bottom: var(--padding-xsmall);
 }
 
 .checkbox-container {
-    display: flex;
-    align-items: center;
-    padding-top: var(--padding-medium);
-    padding-bottom: var(--padding-xlarge);
+  display: flex;
+  align-items: center;
+  padding-top: var(--padding-medium);
+  padding-bottom: var(--padding-xlarge);
 }
 
 label.publish-confirmation {
-    padding: 0px;
+  padding: 0px;
 }
 
 .postedit__form__cta {
-    display: flex;
-    flex-direction: column;
-    gap: var(--gap-medium);
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-medium);
 }
 
 .postedit__form__actions {
-    display: flex;
-    flex-direction: column;
-    margin-top: var(--margin-medium);
-    gap: var(--gap-medium);
+  display: flex;
+  flex-direction: column;
+  margin-top: var(--margin-medium);
+  gap: var(--gap-medium);
 }
-
-
 
 /* Tablet */
 @media (min-width: 680px) {
-    .postedit__text {
-        color: var(--color-white);
-    }
+  .postedit__text {
+    color: var(--color-white);
+  }
 
-    .postedit__container {
-        width: calc(100% - 4em);
-    }
+  .postedit__container {
+    width: calc(100% - 4em);
+  }
 
-    .postedit__form input,
-    .postedit__form textarea {
-        font-size: var(--body-medium);
-    }
+  .postedit__form input,
+  .postedit__form textarea {
+    font-size: var(--body-medium);
+  }
 }

@@ -1,157 +1,221 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="The ESC News admin portal allows authorized team members to manage Eurovision content through an intuitive interface. Create engaging news posts, edit existing stories, organize media assets, and maintain the latest Eurovision coverage with our streamlined content management system.">
-    <meta name="keyword"
-        content="esc news admin, esc news content management, esc news post management, esc news admin, esc news article editor, esc news dashboard, esc news content creation, esc news portal, esc news publishing system">
-    <meta name="author" content="ESC News Team">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="The ESC News admin portal allows authorized team members to manage Eurovision content through an intuitive interface. Create engaging news posts, edit existing stories, organize media assets, and maintain the latest Eurovision coverage with our streamlined content management system."
+    />
+    <meta
+      name="keyword"
+      content="esc news admin, esc news content management, esc news post management, esc news admin, esc news article editor, esc news dashboard, esc news content creation, esc news portal, esc news publishing system"
+    />
+    <meta name="author" content="ESC News Team" />
     <title>ESC News - News Admin Page</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-        href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="../../css/pages/post/index.css">
-    <link rel="stylesheet" href="../../css/stylesheet.css">
-    <link rel="apple-touch-icon" sizes="180x180" href="../../assets/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../../assets/favicon/favicon-16x16.png">
-    <link rel="manifest" href="../../assets/favicon/site.webmanifest">
-    <script src="https://kit.fontawesome.com/f119ec2cf5.js" crossorigin="anonymous"></script>
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../css/pages/post/index.css" />
+    <link rel="stylesheet" href="../../css/stylesheet.css" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="../../assets/favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="../../assets/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="../../assets/favicon/favicon-16x16.png"
+    />
+    <link rel="manifest" href="../../assets/favicon/site.webmanifest" />
+    <script
+      src="https://kit.fontawesome.com/f119ec2cf5.js"
+      crossorigin="anonymous"
+    ></script>
     <script type="module" src="../../js/post/index.js"></script>
+  </head>
 
-
-</head>
-
-<body>
+  <body>
     <a href="#main-content" class="skip2main sr-only">Skip to main content</a>
     <header class="header--dark">
-        <a href="../../index.html" class="header__logo-container">
-            <img src="../../assets/logos/logo-with-icon.png" alt="ESC News logo, go to homepage" class="logo--image">
-        </a>
-        <input type="checkbox" id="menu-checkbox">
-        <div class="burger-menu">
-            <label for="menu-checkbox" class="burger-btn" aria-label="Toggle burger menu">
-                <span class="burger-btn__icon">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </span>
-            </label>
-        </div>
-        <nav class="nav">
-            <a href="../../index.html">News</a>
-            <a href="../public/404.html">Events</a>
-            <a href="../public/404.html">Music videos</a>
-            <a href="../public/404.html">Contestants</a>
-            <a href="public/404.html">About</a>
-        </nav>
-        <a href="../account/login.html" class="button primary small header__cta">Log in</a>
-
+      <a href="../../index.html" class="header__logo-container">
+        <img
+          src="../../assets/logos/logo-with-icon.png"
+          alt="ESC News logo, go to homepage"
+          class="logo--image"
+        />
+      </a>
+      <input type="checkbox" id="menu-checkbox" />
+      <div class="burger-menu">
+        <label
+          for="menu-checkbox"
+          class="burger-btn"
+          aria-label="Toggle burger menu"
+        >
+          <span class="burger-btn__icon">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </label>
+      </div>
+      <nav class="nav">
+        <a href="../../index.html">News</a>
+        <a href="../public/404.html">Events</a>
+        <a href="../public/404.html">Music videos</a>
+        <a href="../public/404.html">Contestants</a>
+        <a href="public/404.html">About</a>
+      </nav>
+      <a href="../account/login.html" class="button primary small header__cta"
+        >Log in</a
+      >
     </header>
     <main class="main--admin" id="main-content">
-        <div class="admin-hero">
-            <article class="card-m card-m--dark card-m--inactive">
-                <div class="card-m__image"><img src="../../images/edit.png"
-                        alt="Graphics of two people moving items on a website by hand."></div>
-                <div class="card-m__content">
-                    <div class="card-m__text">
-                        <h3 class="card-m__heading">On this page you can create, view, edit, and delete published
-                            articles.
-                        </h3>
-                        <p class="card-m__body">Any changes you make here will affect the public page visible to
-                            others
-                            visiting the ESC News web page.
-                        </p>
-                        <p class="card-m__body">To add an article, simply click the "Create new post" button
-                            below. </p>
-                        <p class="card-m__body">To view, edit or delete, simply click the buttons next to the
-                            articles.</p>
-                    </div>
-                </div>
-            </article>
-            <div class="admin-page-cta">
-                <button class="button primary large arrow-right" id="createNewPostButton">Create new post</button>
+      <div class="admin-hero">
+        <article class="card-m card-m--dark card-m--inactive">
+          <div class="card-m__image">
+            <img
+              src="../../images/edit.png"
+              alt="Graphics of two people moving items on a website by hand."
+            />
+          </div>
+          <div class="card-m__content">
+            <div class="card-m__text">
+              <h3 class="card-m__heading">
+                On this page you can create, view, edit, and delete published
+                articles.
+              </h3>
+              <p class="card-m__body">
+                Any changes you make here will affect the public page visible to
+                others visiting the ESC News web page.
+              </p>
+              <p class="card-m__body">
+                To add an article, simply click the "Create new post" button
+                below.
+              </p>
+              <p class="card-m__body">
+                To view, edit or delete, simply click the buttons next to the
+                articles.
+              </p>
             </div>
+          </div>
+        </article>
+        <div class="admin-page-cta">
+          <button
+            class="button primary large arrow-right"
+            id="createNewPostButton"
+          >
+            Create new post
+          </button>
         </div>
-        <div class="published-posts">
-            <div class="loader"></div>
-        </div>
-        <div class="more-published-posts">
-            <div class="more-published-posts__content">
-
-            </div>
-        </div>
-
+      </div>
+      <div class="published-posts">
+        <div class="loader"></div>
+      </div>
+      <div class="more-published-posts">
+        <div class="more-published-posts__content"></div>
+      </div>
     </main>
     <footer class="footer footer--dark">
-        <div class="follow">
-            <div class="some">
-                <p class="footer-heading">Follow us</p>
-                <div class="some__links">
-                    <a href="https://facebook.com/" aria-label="Go to our Facebook page"><i
-                            class="fa-brands fa-facebook"></i></a>
-                    <a href="https://instagram.com/" aria-label="Go to our Instagram page"><i
-                            class="fa-brands fa-instagram"></i></a>
-                    <a href="https://youtube.com/" aria-label="Go to our YouTube page"><i
-                            class="fa-brands fa-youtube"></i></a>
-                    <a href="https://tiktok.com/" aria-label="Go to our TikTok page"><i
-                            class="fa-brands fa-tiktok"></i></a>
-                </div>
-            </div>
-            <div class="newsletter">
-                <label for="newsletter-email" class="footer-heading">Sign up for our newsletter</label>
-                <input type="email" name="email" id="newsletter-email" class="newsletter__input"
-                    placeholder="you@mail.com">
-                <a href="../public/404.html" class="button primary small arrow-right newsletter__button">Sign up!</a>
-            </div>
+      <div class="follow">
+        <div class="some">
+          <p class="footer-heading">Follow us</p>
+          <div class="some__links">
+            <a href="https://facebook.com/" aria-label="Go to our Facebook page"
+              ><i class="fa-brands fa-facebook"></i
+            ></a>
+            <a
+              href="https://instagram.com/"
+              aria-label="Go to our Instagram page"
+              ><i class="fa-brands fa-instagram"></i
+            ></a>
+            <a href="https://youtube.com/" aria-label="Go to our YouTube page"
+              ><i class="fa-brands fa-youtube"></i
+            ></a>
+            <a href="https://tiktok.com/" aria-label="Go to our TikTok page"
+              ><i class="fa-brands fa-tiktok"></i
+            ></a>
+          </div>
         </div>
-        <div class="contact">
-            <div class="contact__logo">
-                <img src="../../assets/logos/logo-with-icon.png" alt="ESC News Logo" class="logo__image">
-            </div>
-            <div class="contact-info">
-                <div class="contact-info__address">
-                    <p class="footer-heading">Address:</p>
-                    <a href="https://maps.app.goo.gl/BVpWLY7vd48eDF687" aria-label="Find us on Google Maps">17 Fairytale
-                        Lane, NC, USA
-                    </a>
-                </div>
-                <div class="contact-info__contact">
-                    <p class="footer-heading">Contact:</p>
-                    <a href="tel:+447911123456" aria-label="Call us at +44 7911 123456">+44
-                        7911 123456
-                    </a>
-                    <a href="mailto:hi@escnews.com" aria-label="Email us at hi@escnews.com">
-                        hi@escnews.com
-                    </a>
-                </div>
-            </div>
+        <div class="newsletter">
+          <label for="newsletter-email" class="footer-heading"
+            >Sign up for our newsletter</label
+          >
+          <input
+            type="email"
+            name="email"
+            id="newsletter-email"
+            class="newsletter__input"
+            placeholder="you@mail.com"
+          />
+          <a
+            href="../public/404.html"
+            class="button primary small arrow-right newsletter__button"
+            >Sign up!</a
+          >
         </div>
-        <div class="links">
-            <div class="links__visit">
-                <a href="../../index.html" class="footer-heading">Get updated</a>
-                <a href="../public/404.html">Events</a>
-                <a href="../public/404.html">Music videos</a>
-                <a href="../public/404.html">Contestants</a>
-                <a href="../../index.html">News</a>
-            </div>
-            <div class="links__involved">
-                <a href="../public/404.html" class="footer-heading">Get involved</a>
-                <a href="../public/404.html">Jobs</a>
-                <a href="../public/404.html">Write for us</a>
-                <a href="../public/404.html">Sponsors</a>
-                <a href="../public/404.html">Partners</a>
-            </div>
+      </div>
+      <div class="contact">
+        <div class="contact__logo">
+          <img
+            src="../../assets/logos/logo-with-icon.png"
+            alt="ESC News Logo"
+            class="logo__image"
+          />
         </div>
-        <div class="copyright">
-            <p class="copyright__text">© 2025 ESC News. All rights reserved.</p>
+        <div class="contact-info">
+          <div class="contact-info__address">
+            <p class="footer-heading">Address:</p>
+            <a
+              href="https://maps.app.goo.gl/BVpWLY7vd48eDF687"
+              aria-label="Find us on Google Maps"
+              >17 Fairytale Lane, NC, USA
+            </a>
+          </div>
+          <div class="contact-info__contact">
+            <p class="footer-heading">Contact:</p>
+            <a href="tel:+447911123456" aria-label="Call us at +44 7911 123456"
+              >+44 7911 123456
+            </a>
+            <a
+              href="mailto:hi@escnews.com"
+              aria-label="Email us at hi@escnews.com"
+            >
+              hi@escnews.com
+            </a>
+          </div>
         </div>
+      </div>
+      <div class="links">
+        <div class="links__visit">
+          <a href="../../index.html" class="footer-heading">Get updated</a>
+          <a href="../public/404.html">Events</a>
+          <a href="../public/404.html">Music videos</a>
+          <a href="../public/404.html">Contestants</a>
+          <a href="../../index.html">News</a>
+        </div>
+        <div class="links__involved">
+          <a href="../public/404.html" class="footer-heading">Get involved</a>
+          <a href="../public/404.html">Jobs</a>
+          <a href="../public/404.html">Write for us</a>
+          <a href="../public/404.html">Sponsors</a>
+          <a href="../public/404.html">Partners</a>
+        </div>
+      </div>
+      <div class="copyright">
+        <p class="copyright__text">© 2025 ESC News. All rights reserved.</p>
+      </div>
     </footer>
-</body>
-
+  </body>
 </html>

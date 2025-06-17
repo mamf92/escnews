@@ -1,11 +1,10 @@
 # 💜 PurpleSequin – ESC News Platform
 
-
 ![ESC News Banner](https://github.com/mamf92/escnews/blob/main/images/banner.png?raw=true)
 
 ---
 
-**PurpleSequin** is a responsive editorial blog focused on the **Eurovision Song Contest**, developed as the **Project Exam** for the first year of front-end studies @ Noroff. The website connects to an existing API, allowing public users to view content about ESC and admin users to view, create, and manage the posts. 
+**PurpleSequin** is a responsive editorial blog focused on the **Eurovision Song Contest**, developed as the **Project Exam** for the first year of front-end studies @ Noroff. The website connects to an existing API, allowing public users to view content about ESC and admin users to view, create, and manage the posts.
 
 ---
 
@@ -17,6 +16,7 @@ The project brief was to create a dynamic, responsive blog platform using JavaSc
 🟣 **PurpleSequin** is a fictional Eurovision-focused editorial platform based in Oslo, Norway. The team blends journalistic storytelling and visual flair to celebrate the ESC universe beyond the stage.
 
 **Site Features:**
+
 - 🎠 Blog feed with carousel of latest posts
 - 🧱 Grid layout of most recent articles
 - 📝 Post page with shareable link
@@ -29,13 +29,15 @@ The project brief was to create a dynamic, responsive blog platform using JavaSc
 ## ⚙️ Built With
 
 **Frontend:**
+
 - [HTML5](https://developer.mozilla.org/en-US/docs/Web/Guide/HTML/HTML5) ![HTML5](https://img.shields.io/badge/HTML5-E34F26?style=flat&logo=html5&logoColor=white)
 - [CSS3](https://developer.mozilla.org/en-US/docs/Web/CSS) ![CSS3](https://img.shields.io/badge/CSS3-1572B6?style=flat&logo=css3&logoColor=white)
 - [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript) ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=flat&logo=javascript&logoColor=black)
 - [VS Code](https://code.visualstudio.com/) ![VS Code](https://img.shields.io/badge/VSCode-007ACC?style=flat&logo=visualstudiocode&logoColor=white)
 
 **Project Management:**
-- GitHub Projects  
+
+- GitHub Projects
 - Course-assigned planning and delivery checklist
 
 ---
@@ -45,6 +47,7 @@ The project brief was to create a dynamic, responsive blog platform using JavaSc
 ### 🔧 Installing
 
 1. Clone the repository:
+
 ```bash
 git clone https://github.com/mamf92/escnews.git
 ```
@@ -62,22 +65,27 @@ git clone https://github.com/mamf92/escnews.git
 ## 🧭 User Stories
 
 ### 📰 Blog Feed
+
 - View a rotating banner carousel with the 3 latest posts
 - Scroll through 12 recent articles in a responsive grid
 - Navigate to specific posts from either section
 
 ### 📖 Specific Blog Post
+
 - Read full post details (title, image, author, date, body)
 - Copy shareable URLs with embedded post IDs
 
 ### ✍️ Create Blog Post (Admin)
+
 - Logged-in admins can create new posts via a secure form
 
 ### 🛠 Edit/Delete Blog Post (Admin)
+
 - Update or delete existing posts by post ID
 - All admin features are protected behind login
 
 ### 🔐 Login/Register
+
 - Secure form handling for creating and accessing admin accounts
 - Authentication tokens stored locally to manage session state
 
@@ -93,6 +101,15 @@ git clone https://github.com/mamf92/escnews.git
 
 ---
 
+## 📄 License
+
+© 2025 Martin Fischer. All rights reserved.
+
+This project and its source code are protected under copyright law.  
+You may not reproduce, distribute, modify, or use any part of this project or its content without explicit written permission from the author.
+
+---
+
 ## 👤 Contact
 
 - [LinkedIn – Martin Fischer](https://www.linkedin.com/in/mamf92/)
@@ -103,5 +120,5 @@ git clone https://github.com/mamf92/escnews.git
 ## 🙏 Acknowledgments
 
 - Eurovision.tv's public image content
-- Eurovision fan communities for the inspiration   
-- API provided by course 
+- Eurovision fan communities for the inspiration
+- API provided by course

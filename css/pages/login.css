@@ -1,119 +1,117 @@
 /* Register admin section */
 .login-admin {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--color-deepblue);
-    padding: var(--padding-medium) 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-deepblue);
+  padding: var(--padding-medium) 0px;
 }
 
 .login-admin__container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    max-width: 42.5rem;
-    background-color: var(--color-nightblue);
-    gap: var(--gap-medium);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 42.5rem;
+  background-color: var(--color-nightblue);
+  gap: var(--gap-medium);
 }
 
 .section__header {
-    display: flex;
-    flex-direction: column;
-    width: calc(100% - 4rem);
-    max-width: 42.5rem;
-    margin: 0 auto 0 auto;
-    gap: var(--gap-medium);
+  display: flex;
+  flex-direction: column;
+  width: calc(100% - 4rem);
+  max-width: 42.5rem;
+  margin: 0 auto 0 auto;
+  gap: var(--gap-medium);
 }
 
 .section__heading {
-    font-size: var(--heading-large);
-    line-height: 2.75rem;
-    letter-spacing: 0.1rem;
-    font-weight: 600;
-    color: var(--color-white);
-    padding-top: var(--padding-medium);
+  font-size: var(--heading-large);
+  line-height: 2.75rem;
+  letter-spacing: 0.1rem;
+  font-weight: 600;
+  color: var(--color-white);
+  padding-top: var(--padding-medium);
 }
 
 .section__header.narrow {
-    max-width: 32rem;
+  max-width: 32rem;
 }
 
 .login-admin__text {
-    color: var(--color-white);
+  color: var(--color-white);
 }
 
 .login-admin__form {
-    display: flex;
-    flex-direction: column;
-    background-color: var(--color-nightblue);
-    width: calc(100% - 4em);
-    max-width: 512px;
-    margin: 0 auto 0 auto;
-    padding-bottom: var(--padding-large);
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-nightblue);
+  width: calc(100% - 4em);
+  max-width: 512px;
+  margin: 0 auto 0 auto;
+  padding-bottom: var(--padding-large);
 }
 
 .login-admin__form label {
-    color: var(--color-white);
-    padding-top: var(--padding-large);
-    padding-bottom: var(--padding-xsmall);
+  color: var(--color-white);
+  padding-top: var(--padding-large);
+  padding-bottom: var(--padding-xsmall);
 }
 
 .login-admin__form input {
-    padding: var(--padding-sm);
-    border: 3px solid var(--color-darkgreen);
-    font-size: var(--body-medium);
+  padding: var(--padding-sm);
+  border: 3px solid var(--color-darkgreen);
+  font-size: var(--body-medium);
 }
 
 .login-admin__form input:focus {
-    outline: none;
-    border: 2px solid var(--color-purple);
+  outline: none;
+  border: 2px solid var(--color-purple);
 }
 
 .login-admin__form input:valid {
-    border: 3px solid var(--color-accentgreen);
+  border: 3px solid var(--color-accentgreen);
 }
 
 .login-admin__form__forgot {
-    color: var(--color-white);
-    font-size: var(--body-small);
-    line-height: 1.25rem;
-    padding: var(--padding-large) 0;
+  color: var(--color-white);
+  font-size: var(--body-small);
+  line-height: 1.25rem;
+  padding: var(--padding-large) 0;
 }
 
 .login-admin__form__forgot a {
-    font-size: var(--body-small);
-    line-height: 1.25rem;
+  font-size: var(--body-small);
+  line-height: 1.25rem;
 }
 
 .checkbox-container {
-    display: flex;
-    align-items: center;
-    padding-top: var(--padding-medium);
-    padding-bottom: var(--body-large);
+  display: flex;
+  align-items: center;
+  padding-top: var(--padding-medium);
+  padding-bottom: var(--body-large);
 }
 
 label.accept-terms {
-    padding: 0px;
+  padding: 0px;
 }
 
 /* Tablet */
 @media (min-width: 680px) {
-    .login-admin__container {
-        width: calc(100% - 4em);
+  .login-admin__container {
+    width: calc(100% - 4em);
+  }
 
-    }
-
-    .login-admin__form input {
-        font-size: var(--body-medium);
-    }
+  .login-admin__form input {
+    font-size: var(--body-medium);
+  }
 }
 
 /* Laptop L 1200px */
 @media (min-width: 1200px) {
-    .section__header {
-        padding-left: 0;
-    }
-
+  .section__header {
+    padding-left: 0;
+  }
 }

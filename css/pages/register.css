@@ -1,128 +1,123 @@
 /* Register admin section */
 .register-admin {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    background-color: var(--color-deepblue);
-    padding: var(--padding-medium) 0px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--color-deepblue);
+  padding: var(--padding-medium) 0px;
 }
 
 .register-admin__container {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    max-width: 42.5rem;
-    background-color: var(--color-nightblue);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  max-width: 42.5rem;
+  background-color: var(--color-nightblue);
 }
 
 .section__header {
-    display: flex;
-    flex-direction: column;
-    width: calc(100% - 4rem);
-    max-width: 42.5rem;
-    margin: 0 auto 0 auto;
+  display: flex;
+  flex-direction: column;
+  width: calc(100% - 4rem);
+  max-width: 42.5rem;
+  margin: 0 auto 0 auto;
 }
 
 .section__heading {
-    font-size: var(--heading-large);
-    line-height: 2.75rem;
-    letter-spacing: 0.1rem;
-    font-weight: 600;
-    color: var(--color-white);
-    padding-top: var(--padding-medium);
-    padding-bottom: var(--padding-small);
+  font-size: var(--heading-large);
+  line-height: 2.75rem;
+  letter-spacing: 0.1rem;
+  font-weight: 600;
+  color: var(--color-white);
+  padding-top: var(--padding-medium);
+  padding-bottom: var(--padding-small);
 }
 
 .section__header.narrow {
-    max-width: 512px;
+  max-width: 512px;
 }
 
 .register-admin .section__header p {
-    padding-bottom: var(--padding-medium);
+  padding-bottom: var(--padding-medium);
 }
 
 .register-admin__text {
-    color: var(--color-white);
+  color: var(--color-white);
 }
 
 .register-admin__form {
-    display: flex;
-    flex-direction: column;
-    background-color: var(--color-nightblue);
-    width: calc(100% - 4em);
-    max-width: 512px;
-    margin: 0 auto 0 auto;
-    padding-bottom: var(--padding-large);
+  display: flex;
+  flex-direction: column;
+  background-color: var(--color-nightblue);
+  width: calc(100% - 4em);
+  max-width: 512px;
+  margin: 0 auto 0 auto;
+  padding-bottom: var(--padding-large);
 }
 
 .register-admin__form input {
-    padding: var(--padding-sm);
-    border: 3px solid var(--color-nightblue);
-    font-size: var(--body-medium);
+  padding: var(--padding-sm);
+  border: 3px solid var(--color-nightblue);
+  font-size: var(--body-medium);
 }
 
 .register-admin__form input:valid {
-    border: 3px solid var(--color-accentgreen);
+  border: 3px solid var(--color-accentgreen);
 }
 
-
 .register-admin__form input:focus {
-    outline: none;
-    border: 2px solid var(--color-purple);
+  outline: none;
+  border: 2px solid var(--color-purple);
 }
 
 .register-admin__form label {
-    color: var(--color-white);
-    padding-top: var(--padding-large);
-    padding-bottom: var(--padding-xsmall);
+  color: var(--color-white);
+  padding-top: var(--padding-large);
+  padding-bottom: var(--padding-xsmall);
 }
 
-
 .register-admin__form__terms {
-    color: var(--color-white);
-    font-size: var(--body-small);
-    line-height: 1.25rem;
-    padding-top: var(--padding-medium);
+  color: var(--color-white);
+  font-size: var(--body-small);
+  line-height: 1.25rem;
+  padding-top: var(--padding-medium);
 }
 
 .register-admin__form__terms a {
-    font-size: var(--body-small);
-    line-height: 1.25rem;
+  font-size: var(--body-small);
+  line-height: 1.25rem;
 }
 
 .checkbox-container {
-    display: flex;
-    align-items: center;
-    padding-top: var(--padding-medium);
-    padding-bottom: var(--padding-xlarge);
+  display: flex;
+  align-items: center;
+  padding-top: var(--padding-medium);
+  padding-bottom: var(--padding-xlarge);
 }
 
 label.accept-terms {
-    padding: 0px;
+  padding: 0px;
 }
-
 
 /* Tablet */
 @media (min-width: 680px) {
-    /* Register - Tablet 768px */
+  /* Register - Tablet 768px */
 
-    .register-admin__container {
-        width: calc(100% - 4em);
+  .register-admin__container {
+    width: calc(100% - 4em);
+  }
 
-    }
-
-    .register-admin__form input,
-    .register-admin__form textarea {
-        font-size: var(--body-medium);
-    }
+  .register-admin__form input,
+  .register-admin__form textarea {
+    font-size: var(--body-medium);
+  }
 }
 
 /* Laptop L 1200px */
 @media (min-width: 1200px) {
-    .section__header {
-        padding-left: 0;
-    }
-
+  .section__header {
+    padding-left: 0;
+  }
 }

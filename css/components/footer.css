@@ -1,191 +1,189 @@
 .footer {
-    display: grid;
-    width: 100%;
-    padding: 0;
-    grid-template-rows: repeat(4, auto);
-    grid-template-areas:
-        'follow'
-        'links'
-        'contact'
-        'copyright';
-    background-color: var(--color-deepblue);
-    color: var(--color-white);
-    grid-area: footer;
+  display: grid;
+  width: 100%;
+  padding: 0;
+  grid-template-rows: repeat(4, auto);
+  grid-template-areas:
+    'follow'
+    'links'
+    'contact'
+    'copyright';
+  background-color: var(--color-deepblue);
+  color: var(--color-white);
+  grid-area: footer;
 }
 
 .footer--dark {
-    background-color: var(--color-nightblue);
+  background-color: var(--color-nightblue);
 }
 
 .follow {
-    display: flex;
-    flex-direction: column;
-    padding: 40px 24px 20px 24px;
-    gap: 24px;
-    grid-area: follow;
+  display: flex;
+  flex-direction: column;
+  padding: 40px 24px 20px 24px;
+  gap: 24px;
+  grid-area: follow;
 }
 
 .some {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .some__links {
-    display: flex;
-    flex-wrap: nowrap;
-    gap: 40px;
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 40px;
 }
 
 .newsletter {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .newsletter__input {
-    padding: 12px 16px;
-    border: none;
+  padding: 12px 16px;
+  border: none;
 }
 
 .newsletter__input::placeholder {
-    font-family: var(--font-body);
-    font-size: var(--body-medium);
+  font-family: var(--font-body);
+  font-size: var(--body-medium);
 }
 
 .contact {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
-    padding: 20px 24px 20px 24px;
-    grid-area: contact;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 20px 24px 20px 24px;
+  grid-area: contact;
 }
 
 .contact__logo {
-    display: flex;
-    align-items: center;
-    gap: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
 .logo__image {
-    height: 32px;
-    width: 84px;
+  height: 32px;
+  width: 84px;
 }
 
 .logo__text {
-    font-family: var(--font-body);
-    font-size: var(--body-medium);
+  font-family: var(--font-body);
+  font-size: var(--body-medium);
 }
 
 .contact-info {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
 }
 
 .contact-info a {
-    text-decoration-line: underline;
-    text-decoration-thickness: 0.11em;
-    text-decoration-color: rgba(254, 254, 254, 0);
-    transition: text-decoration-color 1s;
+  text-decoration-line: underline;
+  text-decoration-thickness: 0.11em;
+  text-decoration-color: rgba(254, 254, 254, 0);
+  transition: text-decoration-color 1s;
 }
 
 .contact-info a:hover {
-    text-decoration-color: rgba(254, 254, 254, 1);
-
+  text-decoration-color: rgba(254, 254, 254, 1);
 }
 
 .contact-info__address,
 .contact-info__contact {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .links {
-    display: flex;
-    flex-wrap: nowrap;
-    justify-content: space-around;
-    padding: 20px 24px 40px 24px;
-    grid-area: links;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: space-around;
+  padding: 20px 24px 40px 24px;
+  grid-area: links;
 }
 
 .links a {
-    text-decoration-line: underline;
-    text-decoration-thickness: 0.11em;
-    text-decoration-color: rgba(254, 254, 254, 0);
-    transition: text-decoration-color 1s;
+  text-decoration-line: underline;
+  text-decoration-thickness: 0.11em;
+  text-decoration-color: rgba(254, 254, 254, 0);
+  transition: text-decoration-color 1s;
 }
 
 .links a:hover {
-    text-decoration-color: rgba(254, 254, 254, 1);
-
+  text-decoration-color: rgba(254, 254, 254, 1);
 }
 
 .links__visit,
 .links__involved {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
 .copyright {
-    display: flex;
-    justify-content: center;
-    padding: 24px 24px 20px 24px;
-    border-top: 1px solid var(--color-white);
-    grid-area: copyright;
+  display: flex;
+  justify-content: center;
+  padding: 24px 24px 20px 24px;
+  border-top: 1px solid var(--color-white);
+  grid-area: copyright;
 }
 
 .copyright__text {
-    text-align: center;
-    font-size: var(--body-xsmall);
+  text-align: center;
+  font-size: var(--body-xsmall);
 }
 
 .fa-brands,
 .fa-solid,
 a {
-    color: var(--color-white);
-    text-decoration: none;
+  color: var(--color-white);
+  text-decoration: none;
 }
 
 .fa-brands,
 .fa-solid {
-    font-size: var(--heading-xsmall);
+  font-size: var(--heading-xsmall);
 }
 
 .footer-heading {
-    font-weight: var(--font-weight-semibold);
+  font-weight: var(--font-weight-semibold);
 }
 
 .newsletter__button {
-    align-self: flex-start;
+  align-self: flex-start;
 }
 
 /* Media queries */
 /* Tablet 768 */
 @media (min-width: 768px) {
-    .footer {
-        grid-template-columns: 1.8fr 2fr 2fr;
-        grid-template-rows: repeat(2, auto);
-        grid-template-areas:
-            'contact links follow'
-            'copyright copyright copyright';
-        color: var(--color-white);
-        justify-content: center;
-        grid-area: footer;
-    }
+  .footer {
+    grid-template-columns: 1.8fr 2fr 2fr;
+    grid-template-rows: repeat(2, auto);
+    grid-template-areas:
+      'contact links follow'
+      'copyright copyright copyright';
+    color: var(--color-white);
+    justify-content: center;
+    grid-area: footer;
+  }
 
-    .contact,
-    .links,
-    .follow {
-        padding: var(--padding-medium)
-    }
+  .contact,
+  .links,
+  .follow {
+    padding: var(--padding-medium);
+  }
 
-    .links__visit,
-    .links__involved {
-        justify-content: center;
-        align-items: center;
-    }
+  .links__visit,
+  .links__involved {
+    justify-content: center;
+    align-items: center;
+  }
 }
 
 /* Laptop 1024 */
@@ -194,11 +192,10 @@ a {
 
 /* Desktop XL 1440 */
 @media (min-width: 1440px) {
-    .footer {
-        grid-template-columns: 208px 1.8fr 2fr 2fr 208px;
-        grid-template-areas:
-            '. contact links follow .'
-            '. copyright copyright copyright .';
-    }
-
+  .footer {
+    grid-template-columns: 208px 1.8fr 2fr 2fr 208px;
+    grid-template-areas:
+      '. contact links follow .'
+      '. copyright copyright copyright .';
+  }
 }

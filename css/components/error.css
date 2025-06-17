@@ -1,77 +1,76 @@
 .error-popup {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    z-index: 1000;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    background-color: var(--color-deepblue);
-    border: 5px solid var(--color-accentorange);
-    min-width: 21.9375rem;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-deepblue);
+  border: 5px solid var(--color-accentorange);
+  min-width: 21.9375rem;
 }
 
 .error-popup__content {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: 100%;
-    max-height: 9.375rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 100%;
+  max-height: 9.375rem;
 }
 
 .error-popup__text {
-    display: flex;
-    flex-direction: column;
-    min-width: calc(100% - 9.25rem);
-    max-width: calc(100% - 9.25rem);
-    color: var(--color-white);
-    gap: var(--gap-xsmall);
-    padding: var(--padding-small);
+  display: flex;
+  flex-direction: column;
+  min-width: calc(100% - 9.25rem);
+  max-width: calc(100% - 9.25rem);
+  color: var(--color-white);
+  gap: var(--gap-xsmall);
+  padding: var(--padding-small);
 }
 
 .error-popup__title {
-    font-size: var(--heading-medium);
-    line-height: 1.375rem;
+  font-size: var(--heading-medium);
+  line-height: 1.375rem;
 }
 
 .error-popup__message {
-    font-size: var(--body-medium);
-    line-height: 1rem;
+  font-size: var(--body-medium);
+  line-height: 1rem;
 }
 
 .error-popup__icon {
-    display: flex;
-    justify-content: center;
-    height: 9.25rem;
+  display: flex;
+  justify-content: center;
+  height: 9.25rem;
 }
 
 .error-popup__icon img {
-    object-fit: cover;
+  object-fit: cover;
 }
 
 .error-popup__actions {
-    display: flex;
-    flex-direction: row;
-    width: 100%;
-    justify-content: center;
-    gap: var(--gap-small);
-    padding: var(--padding-small);
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+  justify-content: center;
+  gap: var(--gap-small);
+  padding: var(--padding-small);
 }
 
 @media (min-width: 680px) {
-    .error-popup {
-        width: 21rem;
-    }
+  .error-popup {
+    width: 21rem;
+  }
 
-    .error-popup__content {
-        padding: var(--padding-small);
-    }
+  .error-popup__content {
+    padding: var(--padding-small);
+  }
 
-    .error-popup__actions {
-        padding: var(--padding-small);
-        gap: 0rem;
-    }
-
+  .error-popup__actions {
+    padding: var(--padding-small);
+    gap: 0rem;
+  }
 }

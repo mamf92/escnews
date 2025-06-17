@@ -1,152 +1,244 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description"
-        content="The ESC News admin portal allows authorized team members to manage Eurovision content through an intuitive interface. To get access you need to log in with your admin account ending in @stud.noroff.no.">
-    <meta name="keyword"
-        content="log in, esc news admin login, esc news admin login, esc news content management, esc news account, esc news admin account, esc news admin portal, esc news admin access, esc news admin login form">
-    <meta name="author" content="ESC News Team">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="description"
+      content="The ESC News admin portal allows authorized team members to manage Eurovision content through an intuitive interface. To get access you need to log in with your admin account ending in @stud.noroff.no."
+    />
+    <meta
+      name="keyword"
+      content="log in, esc news admin login, esc news admin login, esc news content management, esc news account, esc news admin account, esc news admin portal, esc news admin access, esc news admin login form"
+    />
+    <meta name="author" content="ESC News Team" />
     <title>ESC News - Log in to admin account</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-        href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
-        rel="stylesheet">
-    <link rel="stylesheet" href="../../css/pages/login.css">
-    <link rel="stylesheet" href="../../css/stylesheet.css">
-    <link rel="apple-touch-icon" sizes="180x180" href="../../assets/favicon/apple-touch-icon.png">
-    <link rel="icon" type="image/png" sizes="32x32" href="../../assets/favicon/favicon-32x32.png">
-    <link rel="icon" type="image/png" sizes="16x16" href="../../assets/favicon/favicon-16x16.png">
-    <link rel="manifest" href="../../assets/favicon/site.webmanifest">
-    <script src="https://kit.fontawesome.com/f119ec2cf5.js" crossorigin="anonymous"></script>
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,100..900;1,100..900&family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="../../css/pages/login.css" />
+    <link rel="stylesheet" href="../../css/stylesheet.css" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="../../assets/favicon/apple-touch-icon.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="32x32"
+      href="../../assets/favicon/favicon-32x32.png"
+    />
+    <link
+      rel="icon"
+      type="image/png"
+      sizes="16x16"
+      href="../../assets/favicon/favicon-16x16.png"
+    />
+    <link rel="manifest" href="../../assets/favicon/site.webmanifest" />
+    <script
+      src="https://kit.fontawesome.com/f119ec2cf5.js"
+      crossorigin="anonymous"
+    ></script>
     <script type="module" src="../../js/account/login.js"></script>
+  </head>
 
-</head>
-
-<body>
+  <body>
     <a href="#main-content" class="skip2main sr-only">Skip to main content</a>
     <header class="header--dark">
-        <a href="../../index.html" class="header__logo-container">
-            <img src="../../assets/logos/logo-with-icon.png" alt="ESC News logo, go to homepage" class="logo--image">
-        </a>
-        <input type="checkbox" id="menu-checkbox">
-        <div class="burger-menu">
-            <label for="menu-checkbox" class="burger-btn" aria-label="Toggle burger menu">
-                <span class="burger-btn__icon">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </span>
-            </label>
-        </div>
-        <nav class="nav">
-            <a href="../../index.html">News</a>
-            <a href="../public/404.html">Events</a>
-            <a href="../public/404.html">Music videos</a>
-            <a href="../public/404.html">Contestants</a>
-            <a href="../public/404.html">About</a>
-        </nav>
-        <a href="./register.html" class="button primary small arrow-right header__cta">Register</a>
-
+      <a href="../../index.html" class="header__logo-container">
+        <img
+          src="../../assets/logos/logo-with-icon.png"
+          alt="ESC News logo, go to homepage"
+          class="logo--image"
+        />
+      </a>
+      <input type="checkbox" id="menu-checkbox" />
+      <div class="burger-menu">
+        <label
+          for="menu-checkbox"
+          class="burger-btn"
+          aria-label="Toggle burger menu"
+        >
+          <span class="burger-btn__icon">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </label>
+      </div>
+      <nav class="nav">
+        <a href="../../index.html">News</a>
+        <a href="../public/404.html">Events</a>
+        <a href="../public/404.html">Music videos</a>
+        <a href="../public/404.html">Contestants</a>
+        <a href="../public/404.html">About</a>
+      </nav>
+      <a
+        href="./register.html"
+        class="button primary small arrow-right header__cta"
+        >Register</a
+      >
     </header>
     <main class="main--admin" id="main-content">
-        <section class="login-admin" id="login-admin">
-            <div class="login-admin__container">
-                <div class="section__header narrow">
-                    <h1 class="section__heading">Log in to admin account</h1>
-                    <p class="login-admin__text">Don't have an admin account? <a class="link"
-                            href="../account/register.html">Register.</a></p>
-                    <p class="login-admin__text">Log in using your Noroff student email.</p>
-                    <p class="login-admin__text">If you encounter any problems get in touch <a class="link"
-                            href="mailto:hi@escnews.com" aria-label="Email us at hi@escnews.com">
-                            here
-                        </a> or send us an
-                        email to hi@escnews.com. </p>
-                </div>
-                <form class="login-admin__form" name="loginAdminForm">
-                    <label for="email" class="login-admin__form__info email-lable">Email</label>
-                    <input type="email" name="email" id="login-email-input" class="login-admin__form__info email-input"
-                        placeholder="you@stud.noroff.no" required pattern=".+@stud\.noroff\.no"
-                        title="Must be a valid Noroff student email ending in @stud.noroff.no">
-                    <label for="password-input" class="login-admin__form__info password-lable">Password</label>
-                    <input type="password" name="password" id="password-input" required
-                        class="login-admin__form__info password-input" placeholder="Your password"
-                        pattern="[a-zA-ZÀ-ÿ0-9\s\-]{8,}"
-                        title="Password must be at least 8 characters long and can only contain letters, numbers, and special characters.">
-                    <p class="login-admin__form__forgot">Click <a class="link" href="404.html"
-                            aria-label="Forgot password link.">here</a> if you forgot your password. </p>
-                    <button class="button primary arrow-right" id="loginButton">Log in</button>
-                </form>
-            </div>
-        </section>
+      <section class="login-admin" id="login-admin">
+        <div class="login-admin__container">
+          <div class="section__header narrow">
+            <h1 class="section__heading">Log in to admin account</h1>
+            <p class="login-admin__text">
+              Don't have an admin account?
+              <a class="link" href="../account/register.html">Register.</a>
+            </p>
+            <p class="login-admin__text">
+              Log in using your Noroff student email.
+            </p>
+            <p class="login-admin__text">
+              If you encounter any problems get in touch
+              <a
+                class="link"
+                href="mailto:hi@escnews.com"
+                aria-label="Email us at hi@escnews.com"
+              >
+                here
+              </a>
+              or send us an email to hi@escnews.com.
+            </p>
+          </div>
+          <form class="login-admin__form" name="loginAdminForm">
+            <label for="email" class="login-admin__form__info email-lable"
+              >Email</label
+            >
+            <input
+              type="email"
+              name="email"
+              id="login-email-input"
+              class="login-admin__form__info email-input"
+              placeholder="you@stud.noroff.no"
+              required
+              pattern=".+@stud\.noroff\.no"
+              title="Must be a valid Noroff student email ending in @stud.noroff.no"
+            />
+            <label
+              for="password-input"
+              class="login-admin__form__info password-lable"
+              >Password</label
+            >
+            <input
+              type="password"
+              name="password"
+              id="password-input"
+              required
+              class="login-admin__form__info password-input"
+              placeholder="Your password"
+              pattern="[a-zA-ZÀ-ÿ0-9\s\-]{8,}"
+              title="Password must be at least 8 characters long and can only contain letters, numbers, and special characters."
+            />
+            <p class="login-admin__form__forgot">
+              Click
+              <a class="link" href="404.html" aria-label="Forgot password link."
+                >here</a
+              >
+              if you forgot your password.
+            </p>
+            <button class="button primary arrow-right" id="loginButton">
+              Log in
+            </button>
+          </form>
+        </div>
+      </section>
     </main>
     <footer class="footer footer--dark">
-        <div class="follow">
-            <div class="some">
-                <p class="footer-heading">Follow us</p>
-                <div class="some__links">
-                    <a href="https://facebook.com/" aria-label="Go to our Facebook page"><i
-                            class="fa-brands fa-facebook"></i></a>
-                    <a href="https://instagram.com/" aria-label="Go to our Instagram page"><i
-                            class="fa-brands fa-instagram"></i></a>
-                    <a href="https://youtube.com/" aria-label="Go to our YouTube page"><i
-                            class="fa-brands fa-youtube"></i></a>
-                    <a href="https://tiktok.com/" aria-label="Go to our TikTok page"><i
-                            class="fa-brands fa-tiktok"></i></a>
-                </div>
-            </div>
-            <div class="newsletter">
-                <label for="newsletter-email" class="footer-heading">Sign up for our newsletter</label>
-                <input type="email" name="email" id="newsletter-email" class="newsletter__input"
-                    placeholder="you@mail.com">
-                <a href="../public/404.html" class="button primary small arrow-right newsletter__button">Sign up!</a>
-            </div>
+      <div class="follow">
+        <div class="some">
+          <p class="footer-heading">Follow us</p>
+          <div class="some__links">
+            <a href="https://facebook.com/" aria-label="Go to our Facebook page"
+              ><i class="fa-brands fa-facebook"></i
+            ></a>
+            <a
+              href="https://instagram.com/"
+              aria-label="Go to our Instagram page"
+              ><i class="fa-brands fa-instagram"></i
+            ></a>
+            <a href="https://youtube.com/" aria-label="Go to our YouTube page"
+              ><i class="fa-brands fa-youtube"></i
+            ></a>
+            <a href="https://tiktok.com/" aria-label="Go to our TikTok page"
+              ><i class="fa-brands fa-tiktok"></i
+            ></a>
+          </div>
         </div>
-        <div class="contact">
-            <div class="contact__logo">
-                <img src="../../assets/logos/logo-with-icon.png" alt="ESC News Logo" class="logo__image">
-            </div>
-            <div class="contact-info">
-                <div class="contact-info__address">
-                    <p class="footer-heading">Address:</p>
-                    <a href="https://maps.app.goo.gl/BVpWLY7vd48eDF687" aria-label="Find us on Google Maps">17 Fairytale
-                        Lane, NC, USA
-                    </a>
-                </div>
-                <div class="contact-info__contact">
-                    <p class="footer-heading">Contact:</p>
-                    <a href="tel:+447911123456" aria-label="Call us at +44 7911 123456">+44
-                        7911 123456
-                    </a>
-                    <a href="mailto:hi@escnews.com" aria-label="Email us at hi@escnews.com">
-                        hi@escnews.com
-                    </a>
-                </div>
-            </div>
+        <div class="newsletter">
+          <label for="newsletter-email" class="footer-heading"
+            >Sign up for our newsletter</label
+          >
+          <input
+            type="email"
+            name="email"
+            id="newsletter-email"
+            class="newsletter__input"
+            placeholder="you@mail.com"
+          />
+          <a
+            href="../public/404.html"
+            class="button primary small arrow-right newsletter__button"
+            >Sign up!</a
+          >
         </div>
-        <div class="links">
-            <div class="links__visit">
-                <a href="../../index.html" class="footer-heading">Get updated</a>
-                <a href="../public/404.html">Events</a>
-                <a href="../public/404.html">Music videos</a>
-                <a href="../public/404.html">Contestants</a>
-                <a href="../../index.html">News</a>
-            </div>
-            <div class="links__involved">
-                <a href="../public/404.html" class="footer-heading">Get involved</a>
-                <a href="../public/404.html">Jobs</a>
-                <a href="../public/404.html">Write for us</a>
-                <a href="../public/404.html">Sponsors</a>
-                <a href="../public/404.html">Partners</a>
-            </div>
+      </div>
+      <div class="contact">
+        <div class="contact__logo">
+          <img
+            src="../../assets/logos/logo-with-icon.png"
+            alt="ESC News Logo"
+            class="logo__image"
+          />
         </div>
-        <div class="copyright">
-            <p class="copyright__text">© 2025 ESC News. All rights reserved.</p>
+        <div class="contact-info">
+          <div class="contact-info__address">
+            <p class="footer-heading">Address:</p>
+            <a
+              href="https://maps.app.goo.gl/BVpWLY7vd48eDF687"
+              aria-label="Find us on Google Maps"
+              >17 Fairytale Lane, NC, USA
+            </a>
+          </div>
+          <div class="contact-info__contact">
+            <p class="footer-heading">Contact:</p>
+            <a href="tel:+447911123456" aria-label="Call us at +44 7911 123456"
+              >+44 7911 123456
+            </a>
+            <a
+              href="mailto:hi@escnews.com"
+              aria-label="Email us at hi@escnews.com"
+            >
+              hi@escnews.com
+            </a>
+          </div>
         </div>
+      </div>
+      <div class="links">
+        <div class="links__visit">
+          <a href="../../index.html" class="footer-heading">Get updated</a>
+          <a href="../public/404.html">Events</a>
+          <a href="../public/404.html">Music videos</a>
+          <a href="../public/404.html">Contestants</a>
+          <a href="../../index.html">News</a>
+        </div>
+        <div class="links__involved">
+          <a href="../public/404.html" class="footer-heading">Get involved</a>
+          <a href="../public/404.html">Jobs</a>
+          <a href="../public/404.html">Write for us</a>
+          <a href="../public/404.html">Sponsors</a>
+          <a href="../public/404.html">Partners</a>
+        </div>
+      </div>
+      <div class="copyright">
+        <p class="copyright__text">© 2025 ESC News. All rights reserved.</p>
+      </div>
     </footer>
-</body>
-
+  </body>
 </html>

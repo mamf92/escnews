@@ -2,13 +2,12 @@
 @import url('../components/cards/card-xs.css');
 @import url('../components/cards/card-article.css');
 
-
 /* Sections */
 .article {
-    display: flex;
-    flex-direction: column;
-    width: calc(100% - 1.5rem);
-    max-width: 42.5rem;
-    margin: var(--margin-medium) auto var(--margin-medium) auto;
-    gap: var(--gap-medium);
+  display: flex;
+  flex-direction: column;
+  width: calc(100% - 1.5rem);
+  max-width: 42.5rem;
+  margin: var(--margin-medium) auto var(--margin-medium) auto;
+  gap: var(--gap-medium);
 }
