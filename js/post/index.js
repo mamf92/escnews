@@ -1,21 +1,26 @@
 import { showConfirmationPopup, showErrorPopup } from '../shared.js';
+import { auth } from '../firebase.js';
+import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/11.9.1/firebase-auth.js';
+import { signOut } from 'https://www.gstatic.com/firebasejs/11.9.1/firebase-auth.js';
 
 const API_BASE_URL = 'https://v2.api.noroff.dev';
 const allPostsURL = `${API_BASE_URL}/blog/posts/martin_fischer_test`;
 
 /**
- * Checks if user is logged in and redirects to login page if not authenticated
+ * Checks if user is logged in and and loads all published posts, or redirects to login page if not authenticated
  * @param {string} url - The API URL to fetch posts from if user is authenticated
  */
 
-function checkLoggedIn(url) {
-  if (localStorage.getItem('accessToken') === null) {
-    const basePath =
-      window.location.hostname === 'mamf92.github.io' ? '/escnews' : '';
-    window.location.href = `${basePath}/html/account/login.html`;
-  } else {
-    getAllPosts(url);
-  }
+function checkLoggedInWithFirebase(url) {
+  onAuthStateChanged(auth, (user) => {
+    if (user) {
+      getAllPosts(url);
+    } else {
+      const basePath =
+        window.location.hostname === 'mamf92.github.io' ? '/escnews' : '';
+      window.location.href = `${basePath}/html/account/login.html`;
+    }
+  });
 }
 
 /**
@@ -352,8 +357,31 @@ function displayName() {
     logInButton.innerHTML = '';
     logInButton.textContent = `Hi, ${name}`;
     logInButton.href = '#';
+    addEventListener('click', function () {
+      showSignOut();
+    });
   }
 }
+
+/**
+ * Displays the sign out button in the header navigation
+ * Updates the personalized greeting to show "Sign out"
+ * Redirects to login page when clicked
+ */
+
+function showSignOut() {
+  const logInButton = document.querySelector('.header__cta');
+  logInButton.innerHTML = '';
+  logInButton.textContent = 'Sign out';
+  logInButton.href = '#';
+  addEventListener('click', function () {
+    signOut(auth);
+    const basePath =
+      window.location.hostname === 'mamf92.github.io' ? '/escnews' : '';
+    window.location.href = `${basePath}/html/account/login.html`;
+  });
+}
+
 displayName();
 routeToCreatePost();
-checkLoggedIn(allPostsURL);
+checkLoggedInWithFirebase(allPostsURL);
