@@ -118,7 +118,6 @@ async function postLoginToAPI(data, url) {
     const json = await response.json();
     return json;
   } catch (error) {
-    console.error(error);
     showErrorPopup(
       'Please check your email and password, and try again.',
       'Login failed.'
@@ -156,7 +155,7 @@ function storeName(data) {
  */
 
 function moveToNextPage() {
-  let basePath =
+  const basePath =
     window.location.hostname === 'mamf92.github.io' ? '/escnews' : '';
   window.location.href = `${basePath}/html/post/`;
 }

@@ -10,7 +10,7 @@ const allPostsURL = `${API_BASE_URL}/blog/posts/martin_fischer_test`;
 
 function checkLoggedIn(url) {
   if (localStorage.getItem('accessToken') === null) {
-    let basePath =
+    const basePath =
       window.location.hostname === 'mamf92.github.io' ? '/escnews' : '';
     window.location.href = `${basePath}/html/account/login.html`;
   } else {
@@ -28,7 +28,7 @@ async function getAllPosts(url) {
   try {
     const response = await fetch(url);
     if (!response.ok) {
-      throw new Error('Could not get posts. ' + response.status);
+      throw new Error(`Could not get posts. ${response.status}`);
     }
     const json = await response.json();
 
@@ -46,7 +46,6 @@ async function getAllPosts(url) {
       displayLoadMorePostsButton(allPosts);
     }
   } catch (error) {
-    console.error('Error fetching posts:', error);
     showErrorPopup(error.message, 'Error fetching posts');
   }
 }
@@ -279,7 +278,7 @@ function loadMorePosts(posts) {
 function routeToCreatePost() {
   const createNewPostButton = document.querySelector('#createNewPostButton');
   createNewPostButton.addEventListener('click', function () {
-    let basePath =
+    const basePath =
       window.location.hostname === 'mamf92.github.io' ? '/escnews' : '';
     window.location.href = `${basePath}/html/post/create.html`;
   });
@@ -291,13 +290,13 @@ function routeToCreatePost() {
  */
 
 function routeToEditWithID(id) {
-  let basePath =
+  const basePath =
     window.location.hostname === 'mamf92.github.io' ? '/escnews' : '';
   window.location.href = `${basePath}/html/post/edit.html?id=${id}`;
 }
 
 function routeToPostWithID(id) {
-  let basePath =
+  const basePath =
     window.location.hostname === 'mamf92.github.io' ? '/escnews' : '';
   window.location.href = `${basePath}/html/public/newsarticle.html?id=${id}`;
 }
@@ -328,11 +327,10 @@ async function deletePostWithAuthorization(id) {
     const deleteURL = `${allPostsURL}/${id}`;
     const response = await fetch(deleteURL, deleteData);
     if (!response.ok) {
-      throw new Error('Error creating user. Error: ' + response.status);
+      throw new Error(`Error creating user. Error: ${response.status}`);
     }
     getAllPosts(allPostsURL);
   } catch (error) {
-    console.error('Error deleting post:', error);
     showErrorPopup(
       'An error occurred while deleting the post. Please try again.',
       'Delete Post Error'

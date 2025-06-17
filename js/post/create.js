@@ -13,7 +13,7 @@ const postURL = `${API_BASE_URL}/blog/posts/martin_fischer_test`;
 
 function checkLoggedIn() {
   if (localStorage.getItem('accessToken') === null) {
-    let basePath =
+    const basePath =
       window.location.hostname === 'mamf92.github.io' ? '/escnews' : '';
     window.location.href = `${basePath}/html/account/login.html`;
   }
@@ -121,7 +121,7 @@ function prepareUserData(data) {
  */
 
 function moveToNextPage(id) {
-  let basePath =
+  const basePath =
     window.location.hostname === 'mamf92.github.io' ? '/escnews' : '';
   window.location.href = `${basePath}/html/public/newsarticle.html?id=${id}`;
 }
@@ -152,13 +152,12 @@ async function postPostWithToken(data, url) {
     };
     const response = await fetch(url, fetchData);
     if (!response.ok) {
-      throw new Error('Could not create post.' + response.status);
+      throw new Error(`Could not create post.${response.status}`);
     }
     const json = await response.json();
     const id = json.data.id;
     moveToNextPage(id);
   } catch (error) {
-    console.error('Error creating post:', error);
     showErrorPopup(
       'Check if image is publicly available, and try again.',
       'Error creating post'

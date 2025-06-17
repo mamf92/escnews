@@ -34,7 +34,6 @@ async function getPostByID(url) {
     const post = json.data;
     addPostDataToForm(post);
   } catch (error) {
-    console.error('Error fetching post:', error);
     showErrorPopup(error.message, 'Error');
   }
 }
@@ -199,9 +198,8 @@ async function putPostWithToken(data, url) {
     }
     moveToNextPage();
   } catch (error) {
-    console.error('Error updating post:', error);
     showErrorPopup(
-      'Check if image is publically availbalbe.',
+      'Check if image is publically available.',
       'Error updating post'
     );
   }
@@ -213,7 +211,7 @@ async function putPostWithToken(data, url) {
  */
 
 function moveToNextPage() {
-  let basePath =
+  const basePath =
     window.location.hostname === 'mamf92.github.io' ? '/escnews' : '';
   window.location.href = `${basePath}/html/post/`;
 }

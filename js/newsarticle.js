@@ -1,4 +1,8 @@
-import { addLogInEventListener, displayName } from './shared.js';
+import {
+  addLogInEventListener,
+  displayName,
+  showErrorPopup
+} from './shared.js';
 
 const API_BASE_URL = 'https://v2.api.noroff.dev';
 const allPostsURL = `${API_BASE_URL}/blog/posts/martin_fischer_test`;
@@ -23,7 +27,7 @@ async function getPostByID(url) {
     const post = json.data;
     displayPost(post);
   } catch (error) {
-    console.error('Error fetching post:', error);
+    showErrorPopup(error, 'Error');
   }
 }
 

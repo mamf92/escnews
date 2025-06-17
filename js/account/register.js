@@ -176,12 +176,11 @@ async function postRegistrationToAPI(data, url) {
 
     const response = await fetch(url, postData);
     if (!response.ok) {
-      throw new Error('Error creating user. Error: ' + response.status);
+      throw new Error(`Error creating user. Error: ${response.status}`);
     }
     const json = await response.json();
     return json;
   } catch (error) {
-    console.error('Error:', error);
     showErrorPopup(
       'Please check your input and try again.',
       'Registration failed.'
@@ -195,7 +194,7 @@ async function postRegistrationToAPI(data, url) {
  */
 
 function moveToNextPage() {
-  let basePath =
+  const basePath =
     window.location.hostname === 'mamf92.github.io' ? '/escnews' : '';
   window.location.href = `${basePath}/html/account/login.html`;
 }

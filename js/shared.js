@@ -11,7 +11,7 @@ function displayName() {
     const name = localStorage.getItem('name');
     logInButton.innerHTML = '';
     logInButton.textContent = `Hi, ${name}`;
-    let basePath =
+    const basePath =
       window.location.hostname === 'mamf92.github.io' ? '/escnews' : '';
     logInButton.href = `${basePath}/html/post/`;
   }
@@ -26,7 +26,7 @@ function addLogInEventListener() {
   const burgerCTA = document.querySelector('.burger__cta');
   if (localStorage.getItem('name') === null) {
     burgerCTA.addEventListener('click', () => {
-      let basePath =
+      const basePath =
         window.location.hostname === 'mamf92.github.io' ? '/escnews' : '';
       window.location.href = `${basePath}/html/account/login.html`;
     });
@@ -35,7 +35,7 @@ function addLogInEventListener() {
     burgerCTA.innerHTML = '';
     burgerCTA.textContent = `Hi, ${name}`;
     burgerCTA.addEventListener('click', () => {
-      let basePath =
+      const basePath =
         window.location.hostname === 'mamf92.github.io' ? '/escnews' : '';
       window.location.href = `${basePath}/html/post/`;
     });
@@ -71,7 +71,7 @@ function showErrorPopup(message, title) {
   errorPopupIconContainer.classList.add('error-popup__icon');
 
   const errorPopupIcon = document.createElement('img');
-  let basePath =
+  const basePath =
     window.location.hostname === 'mamf92.github.io' ? '/escnews' : '';
   errorPopupIcon.src = `${basePath}/assets/icons/warning.png`;
 
@@ -130,7 +130,7 @@ function showConfirmationPopup(message, title) {
     confirmationPopupIconContainer.classList.add('confirm-popup__icon');
 
     const confirmationPopupIcon = document.createElement('img');
-    let basePath =
+    const basePath =
       window.location.hostname === 'mamf92.github.io' ? '/escnews' : '';
     confirmationPopupIcon.src = `${basePath}/assets/icons/warning.png`;
 

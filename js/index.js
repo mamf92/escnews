@@ -18,7 +18,7 @@ async function getAllPosts(url) {
   try {
     const response = await fetch(url);
     if (!response.ok) {
-      throw new Error('Could not get posts ' + response.status);
+      throw new Error(`Could not get posts ${response.status}`);
     }
     const json = await response.json();
     if (!json || !json.data || !Array.isArray(json.data)) {
@@ -37,7 +37,6 @@ async function getAllPosts(url) {
     }
     setupCarousel();
   } catch (error) {
-    console.error('Error fetching posts:', error);
     showErrorPopup(error.message, 'Error');
   }
 }
@@ -59,7 +58,7 @@ function createContentCardM(post) {
   contentCardM.classList.add('card-m');
   contentCardM.addEventListener('click', function () {
     const postID = post.id;
-    let basePath =
+    const basePath =
       window.location.hostname === 'mamf92.github.io' ? '/escnews' : '';
     window.location.href = `${basePath}/html/public/newsarticle.html?id=${postID}`;
   });
@@ -127,7 +126,7 @@ function createContentCardXSmall(post) {
   contentCardXSmall.classList.add('card-xs', 'card-xs--bright');
   contentCardXSmall.addEventListener('click', function () {
     const postID = post.id;
-    let basePath =
+    const basePath =
       window.location.hostname === 'mamf92.github.io' ? '/escnews' : '';
     window.location.href = `${basePath}/html/public/newsarticle.html?id=${postID}`;
   });
@@ -192,7 +191,7 @@ function createContentCardThumbnail(post) {
   contentCardThumbnail.classList.add('card-tn');
   contentCardThumbnail.addEventListener('click', function () {
     const postID = post.id;
-    let basePath =
+    const basePath =
       window.location.hostname === 'mamf92.github.io' ? '/escnews' : '';
     window.location.href = `${basePath}/html/public/newsarticle.html?id=${postID}`;
   });
