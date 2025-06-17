@@ -357,7 +357,7 @@ function displayName() {
     logInButton.innerHTML = '';
     logInButton.textContent = `Hi, ${name}`;
     logInButton.href = '#';
-    addEventListener('click', function () {
+    logInButton.addEventListener('click', function () {
       showSignOut();
     });
   }
@@ -374,7 +374,33 @@ function showSignOut() {
   logInButton.innerHTML = '';
   logInButton.textContent = 'Sign out';
   logInButton.href = '#';
-  addEventListener('click', function () {
+  logInButton.addEventListener('click', function () {
+    signOut(auth);
+    const basePath =
+      window.location.hostname === 'mamf92.github.io' ? '/escnews' : '';
+    window.location.href = `${basePath}/html/account/login.html`;
+  });
+}
+
+function displayNameInBurger() {
+  const burgerCTA = document.querySelector('.burger__cta');
+  if (localStorage.getItem('name') === null) {
+    return;
+  } else {
+    const name = localStorage.getItem('name');
+    burgerCTA.innerHTML = '';
+    burgerCTA.textContent = `Hi, ${name}`;
+    burgerCTA.addEventListener('click', () => {
+      showSignOutInBurger();
+    });
+  }
+}
+
+function showSignOutInBurger() {
+  const burgerCTA = document.querySelector('.burger__cta');
+  burgerCTA.innerHTML = '';
+  burgerCTA.textContent = 'Sign out';
+  burgerCTA.addEventListener('click', function () {
     signOut(auth);
     const basePath =
       window.location.hostname === 'mamf92.github.io' ? '/escnews' : '';
@@ -383,5 +409,6 @@ function showSignOut() {
 }
 
 displayName();
+displayNameInBurger();
 routeToCreatePost();
 checkLoggedInWithFirebase(allPostsURL);
