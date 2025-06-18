@@ -1,35 +1,11 @@
 import {
   addLogInEventListener,
   displayName,
-  showErrorPopup,
-  showConfirmationPopup
+  showErrorPopup
 } from '../shared.js';
 
-import { auth, colRef } from '../firebase.js';
-import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/11.9.1/firebase-auth.js';
-import {
-  doc,
-  getDoc,
-  setDoc,
-  deleteDoc,
-  Timestamp
-} from 'https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js';
-
-/**
- * Checks if user is logged in and redirects to login page if not authenticated
- */
-
-function checkLoggedInWithFirebase() {
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      return;
-    } else {
-      const basePath =
-        window.location.hostname === 'mamf92.github.io' ? '/escnews' : '';
-      window.location.href = `${basePath}/html/account/login.html`;
-    }
-  });
-}
+const API_BASE_URL = 'https://v2.api.noroff.dev';
+const postURL = `${API_BASE_URL}/blog/posts/martin_fischer_test`;
 
 /**
  * Fetches a specific post by ID from URL parameters and populates the edit form
@@ -38,35 +14,29 @@ function checkLoggedInWithFirebase() {
  * @throws {Error} When the API request fails or post is not found
  */
 
-async function getArticleFromFirestoreByID() {
+async function getPostByID(url) {
   const queryString = window.location.search;
   const urlParam = new URLSearchParams(queryString);
   const id = urlParam.get('id');
-  const docRef = doc(colRef, id);
-
   try {
-    const docSnap = await getDoc(docRef);
-    if (docSnap.exists()) {
-      const article = docSnap.data();
-      addPostDataToForm(article);
+    const response = await fetch(`${url}/${id}`);
+    if (!response.ok) {
+      throw new Error('Could not load article: ', response.status);
     }
+    const json = await response.json();
+    if (!json || !json.data) {
+      throw new Error('Invalid data format received. ');
+    }
+    if (json.data.length === 0) {
+      throw new Error('No post found with the given ID.');
+    }
+
+    const post = json.data;
+    addPostDataToForm(post);
   } catch (error) {
-    showErrorPopup(error, 'Error');
-  } finally {
-    hideLoader();
+    showErrorPopup(error.message, 'Error');
   }
 }
-
-function hideLoader() {
-  const loader = document.querySelector('.loader');
-  if (loader) {
-    loader.style.display = 'none';
-  }
-}
-
-/**
- * Displays a loading spinner while fetching post data
- */
 
 /**
  * Populates the edit form fields with existing post data
@@ -97,12 +67,11 @@ function addPostDataToForm(post) {
  * @param {string} url - The API endpoint URL for updating posts
  */
 
-function addSubmitHandler() {
-  const publishButton = document.querySelector('.publish-button');
-  publishButton.addEventListener('click', (event) => {
+function addSubmitHandler(url) {
+  const form = document.forms.editPostForm;
+  form.addEventListener('submit', (event) => {
     event.preventDefault();
-    const form = document.forms.editPostForm;
-    createUpdatedPost(form);
+    createUpdatedPost(form, url);
   });
 }
 
@@ -123,7 +92,7 @@ function createUpdatedPost(form, url) {
     return;
   }
   const preparedData = prepareData(formData);
-  postArticle(preparedData);
+  putPostWithToken(preparedData, url);
 }
 
 /**
@@ -184,16 +153,13 @@ function validateFormData(data) {
  */
 
 function prepareData(data) {
-  const normalDate = new Date();
   const preparedData = {
     title: data.title,
     body: data.body,
     media: {
       url: data.url,
       alt: data.alt
-    },
-    updated: Timestamp.fromDate(normalDate),
-    author: localStorage.getItem('name') || 'Anonymous'
+    }
   };
   return preparedData;
 }
@@ -211,21 +177,30 @@ function prepareData(data) {
  * @throws {Error} When the post update request fails or user is not authorized
  */
 
-async function postArticle(data) {
+async function putPostWithToken(data, url) {
+  const token = localStorage.getItem('accessToken');
+  const queryString = window.location.search;
+  const urlParam = new URLSearchParams(queryString);
+  const id = urlParam.get('id');
+  const putURL = `${url}/${id}`;
   try {
-    const queryString = window.location.search;
-    const urlParam = new URLSearchParams(queryString);
-    const id = urlParam.get('id');
-    const docRef = doc(colRef, id);
-    const updatedDoc = await setDoc(docRef, data);
-    if (!docRef.id) {
-      throw new Error(`Could not update post. Please try again.`);
+    const fetchData = {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`
+      },
+      body: JSON.stringify(data)
+    };
+    const response = await fetch(putURL, fetchData);
+    if (!response.ok) {
+      throw new Error('Could not create post.');
     }
-    moveToNextPage(id);
+    moveToNextPage();
   } catch (error) {
     showErrorPopup(
-      'Please check your input and try again.',
-      'Error creating post'
+      'Check if image is publically available.',
+      'Error updating post'
     );
   }
 }
@@ -241,55 +216,6 @@ function moveToNextPage() {
   window.location.href = `${basePath}/html/post/`;
 }
 
-function addDeleteEventListener() {
-  const deleteButton = document.querySelector('.delete-button');
-  deleteButton.addEventListener('click', (event) => {
-    event.preventDefault();
-    const queryString = window.location.search;
-    const urlParam = new URLSearchParams(queryString);
-    const id = urlParam.get('id');
-    deletePostWithConfirmation(id);
-  });
-}
-
-/**
- * Deletes a post after user confirmation using Firestore
- * @param {string} id - The unique identifier of the post to delete
- * @throws {Error} When the delete request fails or user is not authorized
- */
-
-async function deletePostWithConfirmation(id) {
-  try {
-    const confirmed = await showConfirmationPopup(
-      'Are you sure you want to delete this post?',
-      'Delete Post'
-    );
-    if (!confirmed) {
-      return;
-    } else {
-      const docRef = doc(colRef, id);
-      await deleteDoc(docRef);
-    }
-    moveToNextPage();
-  } catch (error) {
-    showErrorPopup(
-      `An error occurred while deleting the post. Please try again.${  error}`,
-      'Delete Post Error'
-    );
-  }
-}
-
-/**
- * Adds event listener to the cancel button to route back to posts page
- */
-function routeBackToPosts() {
-  const cancelButton = document.querySelector('.cancel-button');
-  cancelButton.addEventListener('click', (event) => {
-    event.preventDefault();
-    moveToNextPage();
-  });
-}
-
 /**
  * Initializes page functionality when DOM content is loaded
  * Sets up display name, login event listeners, and form submission handler
@@ -298,10 +224,7 @@ function routeBackToPosts() {
 document.addEventListener('DOMContentLoaded', function () {
   displayName();
   addLogInEventListener();
-  addSubmitHandler();
-  addDeleteEventListener();
-  routeBackToPosts();
+  addSubmitHandler(postURL);
 });
 
-checkLoggedInWithFirebase();
-getArticleFromFirestoreByID();
+getPostByID(postURL);

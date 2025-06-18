@@ -3,37 +3,41 @@ import {
   displayName,
   showErrorPopup
 } from './shared.js';
-import { colRef, articlesOrderedByDate } from './firebase.js';
-import { getDocs } from 'https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js';
+
+const API_BASE_URL = 'https://v2.api.noroff.dev';
+const allPostsURL = `${API_BASE_URL}/blog/posts/martin_fischer_test`;
 
 /**
- * Fetches posts from Firestore, processes them, and updates the UI accordingly.
- *
- * Retrieves documents from the Firestore collection referenced by `colRef`,
- * constructs an array of article objects, and passes them to various display
- * functions. Handles errors by showing a popup message.
- *
- * @async
- * @returns {Promise<void>} Resolves when posts have been fetched and UI updated
- * @throws {Error} When Firestore fetch operation fails
+ * Fetches all posts from the API and orchestrates the display of posts in different sections
+ * @param {string} url - The API endpoint URL to fetch posts from
+ * @returns {Promise<void>} Resolves when all posts are fetched and displayed
+ * @throws {Error} When the API request fails or returns invalid data
  */
-async function getPostsFromFirestore() {
+
+async function getAllPosts(url) {
   try {
-    const snapshot = await getDocs(articlesOrderedByDate);
-    const articles = [];
-    snapshot.forEach((doc) => articles.push({ id: doc.id, ...doc.data() }));
-    displayNewestPosts(articles);
-    displayPublishedPosts(articles);
-    displayMorePublishedPosts(articles);
-    if (articles.length > 15) {
-      displayLoadMorePostsButton(articles);
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`Could not get posts ${response.status}`);
+    }
+    const json = await response.json();
+    if (!json || !json.data || !Array.isArray(json.data)) {
+      throw new Error('Invalid data format received. ');
+    }
+    if (json.data.length === 0) {
+      throw new Error('No posts found');
+    }
+    const allPosts = json.data;
+
+    displayNewestPosts(allPosts);
+    displayPublishedPosts(allPosts);
+    displayMorePublishedPosts(allPosts);
+    if (allPosts.length > 15) {
+      displayLoadMorePostsButton(allPosts);
     }
     setupCarousel();
   } catch (error) {
-    showErrorPopup(
-      `There was an error fetching the posts. Please try again later.${  error}`,
-      'Error Fetching Posts'
-    );
+    showErrorPopup(error.message, 'Error');
   }
 }
 
@@ -426,5 +430,5 @@ function setupCarousel() {
 document.addEventListener('DOMContentLoaded', function () {
   displayName();
   addLogInEventListener();
-  getPostsFromFirestore();
+  getAllPosts(allPostsURL);
 });
