@@ -1,49 +1,37 @@
 import { showErrorPopup } from '../shared.js';
-import { auth } from '../firebase.js';
-import { signInWithEmailAndPassword } from 'https://www.gstatic.com/firebasejs/11.9.1/firebase-auth.js';
+
+const API_URL = 'https://v2.api.noroff.dev/auth/login';
 
 /**
  * Logs in a user by validating form data and sending it to the API
  * @param {HTMLFormElement} form - The login form element
- * @returns userCredential - The user credential object if login is successful
+ * @param {string} url - The API endpoint URL for login
+ * @returns {Promise<void>} Resolves when login process is complete
  */
 
-async function loginUser(form) {
+async function loginUser(form, url) {
   const formData = getFormData(form);
   const validFormData = validateFormData(formData);
   if (!validFormData) {
     return;
   } else {
-    const email = formData.email;
-    const password = formData.password;
-    signInWithEmailAndPassword(auth, email, password)
-      .then((userCredential) => {
-        const user = userCredential.user;
-        if (user) {
-          storeName(user, email);
-          moveToNextPage('html/post/');
-        }
-      })
-      .catch((error) => {
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        showErrorPopup(
-          'Please check all fields, and try again.',
-          `Error: ${errorCode} - ${errorMessage}`
-        );
-      });
+    const json = await postLoginToAPI(formData, url);
+    storeAccessToken(json);
+    storeName(json);
+    moveToNextPage('html/post/');
   }
 }
 
 /**
  * Adds a submit event listener to the login form
+ * @param {string} url - The API endpoint URL for login
  */
 
-function addSubmitHandler() {
+function addSubmitHandler(url) {
   const form = document.forms.loginAdminForm;
   form.addEventListener('submit', (event) => {
     event.preventDefault();
-    loginUser(form);
+    loginUser(form, url);
   });
 }
 
@@ -55,8 +43,8 @@ function addSubmitHandler() {
 
 function getFormData(form) {
   const formData = new FormData(form);
-  const objectFromForm = Object.fromEntries(formData.entries());
-  return objectFromForm;
+  const objectFromFrom = Object.fromEntries(formData.entries());
+  return objectFromFrom;
 }
 
 /**
@@ -83,12 +71,14 @@ function validateFormData(data) {
     );
     return false;
   }
-
-  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-  const passwordRegex = /^[a-zA-Z0-9._()%+-]{8,}$/;
+  const emailRegex = /^[a-zA-Z0-9._%+-]+@stud\.noroff\.no$/;
+  const passwordRegex = /^[a-zA-Z0-9._%+-]{8,}$/;
 
   if (!emailRegex.test(data.email)) {
-    showErrorPopup('Email must be a valid email address.', 'Invalid email.');
+    showErrorPopup(
+      'Email must be a valid email address ending with @stud.noroff.no',
+      'Invalid email format.'
+    );
     return false;
   }
   if (!passwordRegex.test(data.password)) {
@@ -102,27 +92,61 @@ function validateFormData(data) {
 }
 
 /**
+ * Sends login credentials to the API and returns the response
+ * @param {Object} data - The login credentials
+ * @param {string} data.email - The user's email address
+ * @param {string} data.password - The user's password
+ * @param {string} url - The API endpoint URL for login
+ * @returns {Promise<Object>} The API response containing user data and access token
+ * @throws {Error} When the login request fails or credentials are invalid
+ */
+
+async function postLoginToAPI(data, url) {
+  try {
+    const postData = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    };
+
+    const response = await fetch(url, postData);
+    if (!response.ok) {
+      throw new Error('Error signing in ');
+    }
+    const json = await response.json();
+    return json;
+  } catch (error) {
+    showErrorPopup(
+      'Please check your email and password, and try again.',
+      'Login failed.'
+    );
+  }
+}
+
+/**
+ * Stores the access token from API response in localStorage
+ * @param {Object} data - The API response data
+ * @param {Object} data.data - The nested data object
+ * @param {string} data.data.accessToken - The JWT access token
+ */
+
+function storeAccessToken(data) {
+  const accessToken = data.data.accessToken;
+  localStorage.setItem('accessToken', accessToken);
+}
+
+/**
  * Stores the user's name from API response in localStorage, removing any suffix after underscore
  * @param {Object} data - The API response data
  * @param {Object} data.data - The nested data object
  * @param {string} data.data.name - The user's full name from the API
  */
 
-function storeName(data, email) {
-  if (
-    !data ||
-    !data.displayName ||
-    data.displayName === null ||
-    data.displayName === undefined ||
-    data.displayName === ''
-  ) {
-    const altName = email.split('@')[0];
-    localStorage.setItem('name', altName);
-    return;
-  } else {
-    const name = data.displayName;
-    localStorage.setItem('name', name);
-  }
+function storeName(data) {
+  const name = data.data.name.replace(/_.*/, '');
+  localStorage.setItem('name', name);
 }
 
 /**
@@ -136,4 +160,4 @@ function moveToNextPage() {
   window.location.href = `${basePath}/html/post/`;
 }
 
-addSubmitHandler();
+addSubmitHandler(API_URL);

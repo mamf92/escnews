@@ -1,32 +1,21 @@
 import { showConfirmationPopup, showErrorPopup } from '../shared.js';
-import { auth, colRef, articlesOrderedByDate } from '../firebase.js';
-import {
-  onAuthStateChanged,
-  updateProfile,
-  getAuth
-} from 'https://www.gstatic.com/firebasejs/11.9.1/firebase-auth.js';
-import { signOut } from 'https://www.gstatic.com/firebasejs/11.9.1/firebase-auth.js';
-import {
-  doc,
-  getDocs,
-  deleteDoc
-} from 'https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js';
+
+const API_BASE_URL = 'https://v2.api.noroff.dev';
+const allPostsURL = `${API_BASE_URL}/blog/posts/martin_fischer_test`;
 
 /**
- * Checks if user is logged in and and loads all published posts, or redirects to login page if not authenticated
+ * Checks if user is logged in and redirects to login page if not authenticated
  * @param {string} url - The API URL to fetch posts from if user is authenticated
  */
 
-function checkLoggedInWithFirebase() {
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      getPostsFromFirestore();
-    } else {
-      const basePath =
-        window.location.hostname === 'mamf92.github.io' ? '/escnews' : '';
-      window.location.href = `${basePath}/html/account/login.html`;
-    }
-  });
+function checkLoggedIn(url) {
+  if (localStorage.getItem('accessToken') === null) {
+    const basePath =
+      window.location.hostname === 'mamf92.github.io' ? '/escnews' : '';
+    window.location.href = `${basePath}/html/account/login.html`;
+  } else {
+    getAllPosts(url);
+  }
 }
 
 /**
@@ -35,18 +24,29 @@ function checkLoggedInWithFirebase() {
  * @throws {Error} When the API request fails or returns invalid data
  */
 
-async function getPostsFromFirestore() {
+async function getAllPosts(url) {
   try {
-    const snapshot = await getDocs(articlesOrderedByDate);
-    const articles = [];
-    snapshot.forEach((doc) => articles.push({ id: doc.id, ...doc.data() }));
-    displayPublishedPosts(articles);
-    displayMorePublishedPosts(articles);
-    if (articles.length > 10) {
-      displayLoadMorePostsButton(articles);
+    const response = await fetch(url);
+    if (!response.ok) {
+      throw new Error(`Could not get posts. ${response.status}`);
+    }
+    const json = await response.json();
+
+    if (!json || !json.data || !Array.isArray(json.data)) {
+      throw new Error('Invalid data format received. ');
+    }
+    if (json.data.length === 0) {
+      throw new Error('No posts found. ');
+    }
+    const allPosts = json.data;
+
+    displayPublishedPosts(allPosts);
+    displayMorePublishedPosts(allPosts);
+    if (allPosts.length > 10) {
+      displayLoadMorePostsButton(allPosts);
     }
   } catch (error) {
-    showErrorPopup(error, 'Error fetching posts');
+    showErrorPopup(error.message, 'Error fetching posts');
   }
 }
 
@@ -87,7 +87,7 @@ function createAdminCardSmall(post) {
   const deleteButton = document.createElement('button');
   deleteButton.classList.add('button', 'secondary', 'bin', 'admin-cta');
   deleteButton.addEventListener('click', function () {
-    deletePostWithConfirmation(post.id);
+    deletePostWithAuthorization(post.id);
   });
 
   const viewButton = document.createElement('button');
@@ -168,7 +168,7 @@ function createAdminCardThumbnail(post) {
   const deleteButton = document.createElement('button');
   deleteButton.classList.add('button', 'secondary', 'bin', 'admin-cta');
   deleteButton.addEventListener('click', function () {
-    deletePostWithConfirmation(post.id);
+    deletePostWithAuthorization(post.id);
   });
 
   const viewButton = document.createElement('button');
@@ -302,12 +302,12 @@ function routeToPostWithID(id) {
 }
 
 /**
- * Deletes a post after user confirmation using Firestore
+ * Deletes a post after user confirmation using API authorization
  * @param {string} id - The unique identifier of the post to delete
  * @throws {Error} When the delete request fails or user is not authorized
  */
 
-async function deletePostWithConfirmation(id) {
+async function deletePostWithAuthorization(id) {
   try {
     const confirmed = await showConfirmationPopup(
       'Are you sure you want to delete this post?',
@@ -315,14 +315,24 @@ async function deletePostWithConfirmation(id) {
     );
     if (!confirmed) {
       return;
-    } else {
-      const docRef = doc(colRef, id);
-      await deleteDoc(docRef);
     }
-    getPostsFromFirestore();
+    const token = localStorage.getItem('accessToken');
+    const deleteData = {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`
+      }
+    };
+    const deleteURL = `${allPostsURL}/${id}`;
+    const response = await fetch(deleteURL, deleteData);
+    if (!response.ok) {
+      throw new Error(`Error creating user. Error: ${response.status}`);
+    }
+    getAllPosts(allPostsURL);
   } catch (error) {
     showErrorPopup(
-      `An error occurred while deleting the post. Please try again.${  error}`,
+      'An error occurred while deleting the post. Please try again.',
       'Delete Post Error'
     );
   }
@@ -342,58 +352,8 @@ function displayName() {
     logInButton.innerHTML = '';
     logInButton.textContent = `Hi, ${name}`;
     logInButton.href = '#';
-    logInButton.addEventListener('click', function () {
-      showSignOut();
-    });
   }
 }
-
-/**
- * Displays the sign out button in the header navigation
- * Updates the personalized greeting to show "Sign out"
- * Redirects to login page when clicked
- */
-
-function showSignOut() {
-  const logInButton = document.querySelector('.header__cta');
-  logInButton.innerHTML = '';
-  logInButton.textContent = 'Sign out';
-  logInButton.href = '#';
-  logInButton.addEventListener('click', function () {
-    signOut(auth);
-    const basePath =
-      window.location.hostname === 'mamf92.github.io' ? '/escnews' : '';
-    window.location.href = `${basePath}/html/account/login.html`;
-  });
-}
-
-function displayNameInBurger() {
-  const burgerCTA = document.querySelector('.burger__cta');
-  if (localStorage.getItem('name') === null) {
-    return;
-  } else {
-    const name = localStorage.getItem('name');
-    burgerCTA.innerHTML = '';
-    burgerCTA.textContent = `Hi, ${name}`;
-    burgerCTA.addEventListener('click', () => {
-      showSignOutInBurger();
-    });
-  }
-}
-
-function showSignOutInBurger() {
-  const burgerCTA = document.querySelector('.burger__cta');
-  burgerCTA.innerHTML = '';
-  burgerCTA.textContent = 'Sign out';
-  burgerCTA.addEventListener('click', function () {
-    signOut(auth);
-    const basePath =
-      window.location.hostname === 'mamf92.github.io' ? '/escnews' : '';
-    window.location.href = `${basePath}/html/account/login.html`;
-  });
-}
-
 displayName();
-displayNameInBurger();
 routeToCreatePost();
-checkLoggedInWithFirebase();
+checkLoggedIn(allPostsURL);

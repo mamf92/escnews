@@ -4,54 +4,48 @@ import {
   showErrorPopup
 } from '../shared.js';
 
-import { auth, colRef } from '../firebase.js';
-import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/11.9.1/firebase-auth.js';
-import {
-  addDoc,
-  Timestamp
-} from 'https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js';
+const API_BASE_URL = 'https://v2.api.noroff.dev';
+const postURL = `${API_BASE_URL}/blog/posts/martin_fischer_test`;
 
 /**
  * Checks if user is logged in and redirects to login page if not authenticated
  */
 
-function checkLoggedInWithFirebase() {
-  onAuthStateChanged(auth, (user) => {
-    if (user) {
-      return;
-    } else {
-      const basePath =
-        window.location.hostname === 'mamf92.github.io' ? '/escnews' : '';
-      window.location.href = `${basePath}/html/account/login.html`;
-    }
-  });
+function checkLoggedIn() {
+  if (localStorage.getItem('accessToken') === null) {
+    const basePath =
+      window.location.hostname === 'mamf92.github.io' ? '/escnews' : '';
+    window.location.href = `${basePath}/html/account/login.html`;
+  }
 }
 
 /**
  * Adds a submit event listener to the create post form
+ * @param {string} url - The API endpoint URL for creating posts
  */
 
-function addSubmitHandler() {
-  const formLocation = document.forms.createPostForm;
-  formLocation.addEventListener('submit', (event) => {
+function addSubmitHandler(url) {
+  const form = document.forms.createPostForm;
+  form.addEventListener('submit', (event) => {
     event.preventDefault();
-    createPost(formLocation);
+    createPost(form, url);
   });
 }
 
 /**
  * Creates a new post by validating form data and sending it to the API
  * @param {HTMLFormElement} form - The create post form element
+ * @param {string} url - The API endpoint URL for creating posts
  */
 
-function createPost(form) {
+function createPost(form, url) {
   const formData = getFormData(form);
   const validFormData = validateFormData(formData);
   if (!validFormData) {
     return;
   }
-  const preparedData = prepareArticleData(formData);
-  postArticle(preparedData);
+  const preparedData = prepareUserData(formData);
+  postPostWithToken(preparedData, url);
 }
 
 /**
@@ -108,18 +102,14 @@ function validateFormData(data) {
  * @returns {Object} Formatted post object with nested media properties
  */
 
-function prepareArticleData(data) {
-  const normalDate = new Date();
-
+function prepareUserData(data) {
   const preparedData = {
     title: data.title,
     body: data.body,
     media: {
       url: data.url,
       alt: data.alt
-    },
-    updated: Timestamp.fromDate(normalDate),
-    author: localStorage.getItem('name') || 'Anonymous'
+    }
   };
   return preparedData;
 }
@@ -144,23 +134,32 @@ function moveToNextPage(id) {
  * @param {Object} data.media - The media object containing image data
  * @param {string} data.media.url - The image URL
  * @param {string} data.media.alt - The image alt text
- * @param {string} data.author - The author's name
- * @param {Timestamp} data.updated - The timestamp of when the post was last updated
+ * @param {string} url - The API endpoint URL for creating posts
  * @returns {Promise<void>} Resolves when post creation is complete
  * @throws {Error} When the post creation request fails or user is not authorized
  */
 
-async function postArticle(data) {
+async function postPostWithToken(data, url) {
+  const token = localStorage.getItem('accessToken');
   try {
-    const docRef = await addDoc(colRef, data);
-    if (!docRef.id) {
-      throw new Error(`Could not create post. Please try again.`);
+    const fetchData = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${token}`
+      },
+      body: JSON.stringify(data)
+    };
+    const response = await fetch(url, fetchData);
+    if (!response.ok) {
+      throw new Error(`Could not create post.${response.status}`);
     }
-    const id = docRef.id;
+    const json = await response.json();
+    const id = json.data.id;
     moveToNextPage(id);
   } catch (error) {
     showErrorPopup(
-      'Please check your input and try again.',
+      'Check if image is publicly available, and try again.',
       'Error creating post'
     );
   }
@@ -174,7 +173,7 @@ async function postArticle(data) {
 document.addEventListener('DOMContentLoaded', function () {
   displayName();
   addLogInEventListener();
-  addSubmitHandler();
+  addSubmitHandler(postURL);
 });
 
-checkLoggedInWithFirebase();
+checkLoggedIn();
