@@ -1,20 +1,18 @@
 import { showConfirmationPopup, showErrorPopup } from '../shared.js';
-import { auth } from '../firebase.js';
+import { auth, colRef } from '../firebase.js';
 import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/11.9.1/firebase-auth.js';
 import { signOut } from 'https://www.gstatic.com/firebasejs/11.9.1/firebase-auth.js';
-
-const API_BASE_URL = 'https://v2.api.noroff.dev';
-const allPostsURL = `${API_BASE_URL}/blog/posts/martin_fischer_test`;
+import { getDocs } from 'https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js';
 
 /**
  * Checks if user is logged in and and loads all published posts, or redirects to login page if not authenticated
  * @param {string} url - The API URL to fetch posts from if user is authenticated
  */
 
-function checkLoggedInWithFirebase(url) {
+function checkLoggedInWithFirebase() {
   onAuthStateChanged(auth, (user) => {
     if (user) {
-      getAllPosts(url);
+      getPostsFromFirestore();
     } else {
       const basePath =
         window.location.hostname === 'mamf92.github.io' ? '/escnews' : '';
@@ -29,29 +27,19 @@ function checkLoggedInWithFirebase(url) {
  * @throws {Error} When the API request fails or returns invalid data
  */
 
-async function getAllPosts(url) {
+async function getPostsFromFirestore() {
   try {
-    const response = await fetch(url);
-    if (!response.ok) {
-      throw new Error(`Could not get posts. ${response.status}`);
-    }
-    const json = await response.json();
-
-    if (!json || !json.data || !Array.isArray(json.data)) {
-      throw new Error('Invalid data format received. ');
-    }
-    if (json.data.length === 0) {
-      throw new Error('No posts found. ');
-    }
-    const allPosts = json.data;
-
-    displayPublishedPosts(allPosts);
-    displayMorePublishedPosts(allPosts);
-    if (allPosts.length > 10) {
-      displayLoadMorePostsButton(allPosts);
+    const snapshot = await getDocs(colRef);
+    const articles = [];
+    snapshot.forEach((doc) => articles.push({ id: doc.id, ...doc.data() }));
+    console.log('Posts fetched from Firestore:', articles);
+    displayPublishedPosts(articles);
+    displayMorePublishedPosts(articles);
+    if (articles.length > 10) {
+      displayLoadMorePostsButton(articles);
     }
   } catch (error) {
-    showErrorPopup(error.message, 'Error fetching posts');
+    showErrorPopup(error, 'Error fetching posts');
   }
 }
 
@@ -411,4 +399,4 @@ function showSignOutInBurger() {
 displayName();
 displayNameInBurger();
 routeToCreatePost();
-checkLoggedInWithFirebase(allPostsURL);
+checkLoggedInWithFirebase();
