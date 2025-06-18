@@ -3,7 +3,7 @@ import {
   displayName,
   showErrorPopup
 } from './shared.js';
-import { colRef } from './firebase.js';
+import { colRef, articlesOrderedByDate } from './firebase.js';
 import { getDocs } from 'https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js';
 
 /**
@@ -19,10 +19,9 @@ import { getDocs } from 'https://www.gstatic.com/firebasejs/11.9.1/firebase-fire
  */
 async function getPostsFromFirestore() {
   try {
-    const snapshot = await getDocs(colRef);
+    const snapshot = await getDocs(articlesOrderedByDate);
     const articles = [];
     snapshot.forEach((doc) => articles.push({ id: doc.id, ...doc.data() }));
-    console.log('Posts fetched from Firestore:', articles);
     displayNewestPosts(articles);
     displayPublishedPosts(articles);
     displayMorePublishedPosts(articles);
@@ -32,7 +31,7 @@ async function getPostsFromFirestore() {
     setupCarousel();
   } catch (error) {
     showErrorPopup(
-      'There was an error fetching the posts. Please try again later.' + error,
+      `There was an error fetching the posts. Please try again later.${  error}`,
       'Error Fetching Posts'
     );
   }

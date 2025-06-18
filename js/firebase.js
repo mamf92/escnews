@@ -4,10 +4,8 @@ import { getAuth } from 'https://www.gstatic.com/firebasejs/11.9.1/firebase-auth
 import {
   getFirestore,
   collection,
-  getDocs,
-  addDoc,
-  updateDoc,
-  deleteDoc
+  query,
+  orderBy
 } from 'https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js';
 import {
   setPersistence,
@@ -32,14 +30,13 @@ const auth = getAuth(app);
 const db = getFirestore(app);
 const colRef = collection(db, 'articles');
 
+// Create reusable ordered query
+const articlesOrderedByDate = query(colRef, orderBy('updated', 'desc')); // newest first
+
 // Set the persistence for Firebase Auth to use local storage
 setPersistence(auth, browserLocalPersistence)
-  .then(() => {
-    console.log('Auth persistence set to local storage.');
-  })
-  .catch((error) => {
-    console.error('Error setting auth persistence:', error);
-  });
+  .then(() => {})
+  .catch((error) => {});
 
 // Export the initialized Firebase app and services
-export { app, auth, db, colRef };
+export { app, auth, db, colRef, articlesOrderedByDate };

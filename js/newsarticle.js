@@ -49,7 +49,6 @@ async function getArticleFromFirestoreByID() {
  */
 
 function createPost(post) {
-  console.log('Creating post card for:', post.title);
   const articleCard = document.createElement('article');
   articleCard.classList.add('card-article');
 

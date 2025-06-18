@@ -1,8 +1,16 @@
 import { showConfirmationPopup, showErrorPopup } from '../shared.js';
-import { auth, colRef } from '../firebase.js';
-import { onAuthStateChanged } from 'https://www.gstatic.com/firebasejs/11.9.1/firebase-auth.js';
+import { auth, colRef, articlesOrderedByDate } from '../firebase.js';
+import {
+  onAuthStateChanged,
+  updateProfile,
+  getAuth
+} from 'https://www.gstatic.com/firebasejs/11.9.1/firebase-auth.js';
 import { signOut } from 'https://www.gstatic.com/firebasejs/11.9.1/firebase-auth.js';
-import { getDocs } from 'https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js';
+import {
+  doc,
+  getDocs,
+  deleteDoc
+} from 'https://www.gstatic.com/firebasejs/11.9.1/firebase-firestore.js';
 
 /**
  * Checks if user is logged in and and loads all published posts, or redirects to login page if not authenticated
@@ -29,10 +37,9 @@ function checkLoggedInWithFirebase() {
 
 async function getPostsFromFirestore() {
   try {
-    const snapshot = await getDocs(colRef);
+    const snapshot = await getDocs(articlesOrderedByDate);
     const articles = [];
     snapshot.forEach((doc) => articles.push({ id: doc.id, ...doc.data() }));
-    console.log('Posts fetched from Firestore:', articles);
     displayPublishedPosts(articles);
     displayMorePublishedPosts(articles);
     if (articles.length > 10) {
@@ -80,7 +87,7 @@ function createAdminCardSmall(post) {
   const deleteButton = document.createElement('button');
   deleteButton.classList.add('button', 'secondary', 'bin', 'admin-cta');
   deleteButton.addEventListener('click', function () {
-    deletePostWithAuthorization(post.id);
+    deletePostWithConfirmation(post.id);
   });
 
   const viewButton = document.createElement('button');
@@ -161,7 +168,7 @@ function createAdminCardThumbnail(post) {
   const deleteButton = document.createElement('button');
   deleteButton.classList.add('button', 'secondary', 'bin', 'admin-cta');
   deleteButton.addEventListener('click', function () {
-    deletePostWithAuthorization(post.id);
+    deletePostWithConfirmation(post.id);
   });
 
   const viewButton = document.createElement('button');
@@ -295,12 +302,12 @@ function routeToPostWithID(id) {
 }
 
 /**
- * Deletes a post after user confirmation using API authorization
+ * Deletes a post after user confirmation using Firestore
  * @param {string} id - The unique identifier of the post to delete
  * @throws {Error} When the delete request fails or user is not authorized
  */
 
-async function deletePostWithAuthorization(id) {
+async function deletePostWithConfirmation(id) {
   try {
     const confirmed = await showConfirmationPopup(
       'Are you sure you want to delete this post?',
@@ -308,24 +315,14 @@ async function deletePostWithAuthorization(id) {
     );
     if (!confirmed) {
       return;
+    } else {
+      const docRef = doc(colRef, id);
+      await deleteDoc(docRef);
     }
-    const token = localStorage.getItem('accessToken');
-    const deleteData = {
-      method: 'DELETE',
-      headers: {
-        'Content-Type': 'application/json',
-        Authorization: `Bearer ${token}`
-      }
-    };
-    const deleteURL = `${allPostsURL}/${id}`;
-    const response = await fetch(deleteURL, deleteData);
-    if (!response.ok) {
-      throw new Error(`Error creating user. Error: ${response.status}`);
-    }
-    getAllPosts(allPostsURL);
+    getPostsFromFirestore();
   } catch (error) {
     showErrorPopup(
-      'An error occurred while deleting the post. Please try again.',
+      `An error occurred while deleting the post. Please try again.${  error}`,
       'Delete Post Error'
     );
   }
