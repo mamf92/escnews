@@ -19,9 +19,8 @@ async function loginUser(form) {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         const user = userCredential.user;
-        console.log('User logged in:', user);
         if (user) {
-          storeName(userCredential.user.displayName, email);
+          storeName(user, email);
           moveToNextPage('html/post/');
         }
       })
@@ -121,7 +120,7 @@ function storeName(data, email) {
     localStorage.setItem('name', altName);
     return;
   } else {
-    const name = data.displayName.split('_')[0];
+    const name = data.displayName;
     localStorage.setItem('name', name);
   }
 }
