@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="The ESC News admin portal allows authorized team members to manage Eurovision content through an intuitive interface. To get access you need to log in with your admin account ending in @stud.noroff.no."
+      content="The ESC News admin portal allows authorized team members to manage Eurovision content through an intuitive interface. To get access you need to log in with your admin account email and password."
     />
     <meta
       name="keyword"
@@ -93,7 +93,7 @@
               <a class="link" href="../account/register.html">Register.</a>
             </p>
             <p class="login-admin__text">
-              Log in using your Noroff student email.
+              Log in using your email and password.
             </p>
             <p class="login-admin__text">
               If you encounter any problems get in touch
@@ -116,10 +116,10 @@
               name="email"
               id="login-email-input"
               class="login-admin__form__info email-input"
-              placeholder="you@stud.noroff.no"
+              placeholder="you@email.com"
               required
-              pattern=".+@stud\.noroff\.no"
-              title="Must be a valid Noroff student email ending in @stud.noroff.no"
+              pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$"
+              title="Must be a valid email."
             />
             <label
               for="password-input"
@@ -133,7 +133,7 @@
               required
               class="login-admin__form__info password-input"
               placeholder="Your password"
-              pattern="[a-zA-ZÀ-ÿ0-9\s\-]{8,}"
+              pattern=".{8,}"
               title="Password must be at least 8 characters long and can only contain letters, numbers, and special characters."
             />
             <p class="login-admin__form__forgot">
